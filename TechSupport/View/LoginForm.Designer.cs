@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.usernameLabel = new System.Windows.Forms.Label();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
-            this.passwordLabel = new System.Windows.Forms.Label();
+            this.usernameLabel = new System.Windows.Forms.Label();
             this.passwordTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.passwordLabel = new System.Windows.Forms.Label();
             this.messageLabel = new System.Windows.Forms.Label();
             this.loginButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
@@ -57,8 +57,15 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(213, 199);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(213, 208);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // usernameTextBox
+            // 
+            this.usernameTextBox.Location = new System.Drawing.Point(110, 3);
+            this.usernameTextBox.Name = "usernameTextBox";
+            this.usernameTextBox.Size = new System.Drawing.Size(100, 26);
+            this.usernameTextBox.TabIndex = 1;
             // 
             // usernameLabel
             // 
@@ -68,17 +75,18 @@
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.Location = new System.Drawing.Point(3, 0);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(101, 49);
+            this.usernameLabel.Size = new System.Drawing.Size(101, 52);
             this.usernameLabel.TabIndex = 0;
             this.usernameLabel.Text = "User Name:";
             this.usernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // usernameTextBox
+            // passwordTextBox
             // 
-            this.usernameTextBox.Location = new System.Drawing.Point(110, 3);
-            this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(100, 26);
-            this.usernameTextBox.TabIndex = 1;
+            this.passwordTextBox.Location = new System.Drawing.Point(110, 55);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(100, 26);
+            this.passwordTextBox.TabIndex = 2;
+            this.passwordTextBox.UseSystemPasswordChar = true;
             // 
             // passwordLabel
             // 
@@ -86,20 +94,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(3, 49);
+            this.passwordLabel.Location = new System.Drawing.Point(3, 52);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(101, 49);
+            this.passwordLabel.Size = new System.Drawing.Size(101, 52);
             this.passwordLabel.TabIndex = 0;
             this.passwordLabel.Text = "Password:";
             this.passwordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // passwordTextBox
-            // 
-            this.passwordTextBox.Location = new System.Drawing.Point(110, 52);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(100, 26);
-            this.passwordTextBox.TabIndex = 2;
-            this.passwordTextBox.UseSystemPasswordChar = true;
             // 
             // messageLabel
             // 
@@ -108,9 +108,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.messageLabel.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.messageLabel, 2);
-            this.messageLabel.Location = new System.Drawing.Point(3, 98);
+            this.messageLabel.Location = new System.Drawing.Point(3, 104);
             this.messageLabel.Name = "messageLabel";
-            this.messageLabel.Size = new System.Drawing.Size(207, 49);
+            this.messageLabel.Size = new System.Drawing.Size(207, 52);
             this.messageLabel.TabIndex = 4;
             this.messageLabel.Text = "I will be a message";
             this.messageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -120,7 +120,7 @@
             this.loginButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.loginButton.Location = new System.Drawing.Point(3, 150);
+            this.loginButton.Location = new System.Drawing.Point(3, 159);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(101, 46);
             this.loginButton.TabIndex = 3;
@@ -143,6 +143,7 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormExit);
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

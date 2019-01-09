@@ -22,7 +22,9 @@ namespace TechSupport.View
             if (usernameTextBox.Text.Equals("Jane") && passwordTextBox.Text.Equals("test1234"))
             {
                 messageLabel.Text = "";
-                
+                this.Hide();
+                new MainForm(usernameTextBox.Text).Show();
+                this.Close();
             }
             else
             {
@@ -34,6 +36,14 @@ namespace TechSupport.View
         private void LoginForm_Load(object sender, EventArgs e)
         {
             messageLabel.Text = "";
+        }
+
+        private void FormExit(object sender, FormClosedEventArgs e)
+        {
+            if (Application.OpenForms.Count == 0)
+            {
+                Application.Exit();
+            }
         }
     }
 }

@@ -63,6 +63,7 @@
             this.Controls.Add(this.usernameLabel);
             this.Name = "MainForm";
             this.Text = "Main";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormExit);
             this.ResumeLayout(false);
             this.PerformLayout();
 

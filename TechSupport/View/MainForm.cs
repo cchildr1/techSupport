@@ -21,9 +21,18 @@ namespace TechSupport.View
 
         private void logoutLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Form loginForm = new LoginForm();
+           
+            this.Hide();
+            new LoginForm().Show();
             this.Close();
-            loginForm.Show();
+        }
+
+        private void FormExit(object sender, FormClosedEventArgs e)
+        {
+            if (Application.OpenForms.Count == 0)
+            {
+                Application.Exit();
+            }
         }
     }
 }
