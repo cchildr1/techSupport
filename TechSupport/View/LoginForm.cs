@@ -45,5 +45,14 @@ namespace TechSupport.View
                 Application.Exit();
             }
         }
+
+        private void removeErrorMessage(object sender, EventArgs e)
+        {
+            if (messageLabel.Text != "")
+            {
+                messageLabel.Text = "";
+                messageLabel.ForeColor = Color.Black;
+            }
+        }
     }
 }
