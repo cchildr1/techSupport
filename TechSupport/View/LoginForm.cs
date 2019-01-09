@@ -16,5 +16,6 @@ namespace TechSupport.View
         {
             InitializeComponent();
         }
+
     }
 }
