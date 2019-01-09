@@ -17,5 +17,23 @@ namespace TechSupport.View
             InitializeComponent();
         }
 
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            if (usernameTextBox.Text.Equals("Jane") && passwordTextBox.Text.Equals("test1234"))
+            {
+                messageLabel.Text = "";
+                
+            }
+            else
+            {
+                messageLabel.Text = "invalid username/password";
+                messageLabel.ForeColor = Color.Red;
+            }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            messageLabel.Text = "";
+        }
     }
 }
