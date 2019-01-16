@@ -16,7 +16,12 @@ namespace TechSupport.Model
         public string Description { get; }
 
         public int CustomerID { get; }
-
+        /// <summary>
+        /// Constructor that initializes values
+        /// </summary>
+        /// <param name="title">Title of incident</param>
+        /// <param name="description">Description of incident</param>
+        /// <param name="customerID">customer ID of customer reporting incident</param>
         public Incident(string title, string description, int customerID)
         {
             if(string.IsNullOrEmpty(title))
