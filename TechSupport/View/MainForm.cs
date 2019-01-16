@@ -66,6 +66,11 @@ namespace TechSupport.View
             
                 this.RefreshDataGrid();
             }
+
+        private void searchIncidentButton_Click(object sender, EventArgs e)
+        {
+
         }
+    }
     }
 

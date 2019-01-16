@@ -125,6 +125,7 @@
             this.searchIncidentButton.TabIndex = 1;
             this.searchIncidentButton.Text = "Search Incidents";
             this.searchIncidentButton.UseVisualStyleBackColor = true;
+            this.searchIncidentButton.Click += new System.EventHandler(this.searchIncidentButton_Click);
             // 
             // AddIncidentButton
             // 

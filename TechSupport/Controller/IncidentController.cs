@@ -45,5 +45,17 @@ namespace TechSupport.Controller
 
             this.incidentSource.Add(incident);
         }
+
+        public List<Incident> SearchIncidents(int customerID)
+        { 
+            IEnumerable<Incident> queryIncidents = this.incidentSource.GetIncidents().Where(incident => incident.CustomerID == customerID);
+            List<Incident> outputList = new List<Incident>();
+            foreach(Incident incident in queryIncidents)
+            {
+                outputList.Add(incident);
+            }
+
+            return outputList;
+        }
     }
 }
