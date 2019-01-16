@@ -32,9 +32,18 @@ namespace TechSupport.Controller
             return this.incidentSource.GetIncidents();
         }
 
+        /// <summary>
+        /// Adds a new incident to the list in the DAL
+        /// </summary>
+        /// <param name="incident">incident to add to the list</param>
         public void Add(Incident incident)
         {
+            if (incident == null)
+            {
+                throw new ArgumentNullException("Incident cannot be null");
+            }
 
+            this.incidentSource.Add(incident);
         }
     }
 }

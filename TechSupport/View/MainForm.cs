@@ -7,16 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TechSupport.Controller;
 
 namespace TechSupport.View
 {
+    /// <summary>
+    /// Main form of application displayed on login
+    /// </summary>
     public partial class MainForm : Form
     {
 
+        private IncidentController incidentController;
+        /// <summary>
+        /// Constructor that adds the username to the form
+        /// </summary>
+        /// <param name="userName">Username passed from login page</param>
         public MainForm(String userName)
         {
             InitializeComponent();
             usernameLabel.Text = userName;
+            this.incidentController = new IncidentController();
         }
 
         private void logoutLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -33,6 +43,24 @@ namespace TechSupport.View
             {
                 Application.Exit();
             }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            this.RefreshDataGrid();
+        }
+
+        private void RefreshDataGrid()
+        {
+            this.incidentDataGridView.DataSource = null;
+            this.incidentDataGridView.DataSource = this.incidentController.GetIncidents();
+        }
+
+        private void AddIncidentButton_Click(object sender, EventArgs e)
+        {
+            AddIncidentForm addIncidentForm = new AddIncidentForm();
+            this.Hide();
+            addIncidentForm.Show();
         }
     }
 }
