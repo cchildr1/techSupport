@@ -60,7 +60,12 @@ namespace TechSupport.View
         {
             AddIncidentForm addIncidentForm = new AddIncidentForm();
             this.Hide();
-            addIncidentForm.Show();
+            DialogResult result = addIncidentForm.ShowDialog();
+            this.Show();
+            if (result == DialogResult.OK)
+            
+                this.RefreshDataGrid();
+            }
         }
     }
-}
+

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.customerIDTextBox = new System.Windows.Forms.TextBox();
             this.titleTextBox = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -40,23 +40,23 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // customerIDTextBox
+            // 
+            this.customerIDTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.customerIDTextBox.Location = new System.Drawing.Point(217, 3);
+            this.customerIDTextBox.Name = "customerIDTextBox";
+            this.customerIDTextBox.Size = new System.Drawing.Size(100, 20);
+            this.customerIDTextBox.TabIndex = 1;
+            // 
             // titleTextBox
             // 
             this.titleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.titleTextBox.Location = new System.Drawing.Point(217, 3);
+            this.titleTextBox.Location = new System.Drawing.Point(217, 29);
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.Size = new System.Drawing.Size(100, 20);
-            this.titleTextBox.TabIndex = 3;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox1.Location = new System.Drawing.Point(217, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.titleTextBox.TabIndex = 2;
             // 
             // label1
             // 
@@ -89,9 +89,9 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.titleTextBox, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.titleTextBox, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.customerIDTextBox, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.descriptionTextBox, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.addIncidentButton, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.cancelButton, 1, 4);
@@ -125,7 +125,7 @@
             this.descriptionTextBox.Multiline = true;
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(422, 352);
-            this.descriptionTextBox.TabIndex = 5;
+            this.descriptionTextBox.TabIndex = 3;
             // 
             // addIncidentButton
             // 
@@ -135,9 +135,10 @@
             this.addIncidentButton.Location = new System.Drawing.Point(3, 426);
             this.addIncidentButton.Name = "addIncidentButton";
             this.addIncidentButton.Size = new System.Drawing.Size(208, 23);
-            this.addIncidentButton.TabIndex = 6;
+            this.addIncidentButton.TabIndex = 4;
             this.addIncidentButton.Text = "Add Incident";
             this.addIncidentButton.UseVisualStyleBackColor = true;
+            this.addIncidentButton.Click += new System.EventHandler(this.addIncidentButton_Click);
             // 
             // cancelButton
             // 
@@ -147,9 +148,10 @@
             this.cancelButton.Location = new System.Drawing.Point(217, 426);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(208, 23);
-            this.cancelButton.TabIndex = 7;
+            this.cancelButton.TabIndex = 5;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // AddIncidentForm
             // 
@@ -167,8 +169,8 @@
 
         #endregion
 
+        private System.Windows.Forms.TextBox customerIDTextBox;
         private System.Windows.Forms.TextBox titleTextBox;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
