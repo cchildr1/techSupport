@@ -69,7 +69,10 @@ namespace TechSupport.View
 
         private void searchIncidentButton_Click(object sender, EventArgs e)
         {
-
+            SearchIncidentsForm searchIncidentsForm = new SearchIncidentsForm();
+            this.Hide();
+            searchIncidentsForm.ShowDialog();
+            this.Show();
         }
     }
     }

@@ -15,7 +15,7 @@ namespace TechSupport.DAL
         private static List<Incident> _incidents = new List<Incident>
         {
             new Incident("Test1", "this is a test", 1),
-            new Incident("Test2", "this is also a test", 2)
+            new Incident("Test2", "this is also a test", 1)
         }; 
 
         /// <summary>

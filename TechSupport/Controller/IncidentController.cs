@@ -46,7 +46,12 @@ namespace TechSupport.Controller
             this.incidentSource.Add(incident);
         }
 
-        public List<Incident> SearchIncidents(int customerID)
+        /// <summary>
+        /// Searches the list for any incident with a matching customer id
+        /// </summary>
+        /// <param name="customerID"> customer ID that is being searched</param>
+        /// <returns>list of all incidents with particular customer id</returns>
+        public List<Incident> Search(int customerID)
         { 
             IEnumerable<Incident> queryIncidents = this.incidentSource.GetIncidents().Where(incident => incident.CustomerID == customerID);
             List<Incident> outputList = new List<Incident>();
