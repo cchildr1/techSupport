@@ -23,7 +23,7 @@ namespace TechSupport.View
             {
                 messageLabel.Text = "";
                 this.Hide();
-                MainForm mainForm = new MainForm(this.usernameTextBox.Text);
+                MainFormTabbed mainForm = new MainFormTabbed(this.usernameTextBox.Text);
                 mainForm.ShowDialog();
                 this.usernameTextBox.Clear();
                 this.passwordTextBox.Clear();
