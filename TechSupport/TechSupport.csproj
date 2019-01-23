@@ -51,6 +51,12 @@
     <Compile Include="Model\Incident.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\AddIncidentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\AddIncidentControl.Designer.cs">
+      <DependentUpon>AddIncidentControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\IncidentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +102,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\AddIncidentControl.resx">
+      <DependentUpon>AddIncidentControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\IncidentControl.resx">
       <DependentUpon>IncidentControl.cs</DependentUpon>
     </EmbeddedResource>
