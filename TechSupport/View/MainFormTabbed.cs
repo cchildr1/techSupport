@@ -27,5 +27,10 @@ namespace TechSupport.View
         {
             incidentControl1.RefreshDataGrid();
         }
+
+        private void DisplayOpenIncidents(object sender, EventArgs e)
+        {
+            displayOpenIncidents1.getOpenIncidents();
+        }
     }
 }

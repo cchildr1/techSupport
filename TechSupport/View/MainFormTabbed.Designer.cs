@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.mainTabControl = new System.Windows.Forms.TabControl();
+            this.displayOpenIncidentsPage = new System.Windows.Forms.TabPage();
+            this.displayOpenIncidents1 = new TechSupport.UserControls.DisplayOpenIncidents();
             this.incidentTab = new System.Windows.Forms.TabPage();
             this.incidentControl1 = new TechSupport.UserControls.IncidentControl();
             this.searchTab = new System.Windows.Forms.TabPage();
@@ -39,6 +41,7 @@
             this.usernameLabel = new System.Windows.Forms.Label();
             this.logoutLink = new System.Windows.Forms.LinkLabel();
             this.mainTabControl.SuspendLayout();
+            this.displayOpenIncidentsPage.SuspendLayout();
             this.incidentTab.SuspendLayout();
             this.searchTab.SuspendLayout();
             this.addTab.SuspendLayout();
@@ -50,6 +53,7 @@
             this.mainTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainTabControl.Controls.Add(this.displayOpenIncidentsPage);
             this.mainTabControl.Controls.Add(this.incidentTab);
             this.mainTabControl.Controls.Add(this.searchTab);
             this.mainTabControl.Controls.Add(this.addTab);
@@ -59,6 +63,29 @@
             this.mainTabControl.Size = new System.Drawing.Size(796, 500);
             this.mainTabControl.TabIndex = 0;
             this.mainTabControl.SelectedIndexChanged += new System.EventHandler(this.mainTabControl_SelectedIndexChanged);
+            // 
+            // displayOpenIncidentsPage
+            // 
+            this.displayOpenIncidentsPage.Controls.Add(this.displayOpenIncidents1);
+            this.displayOpenIncidentsPage.Location = new System.Drawing.Point(4, 22);
+            this.displayOpenIncidentsPage.Name = "displayOpenIncidentsPage";
+            this.displayOpenIncidentsPage.Padding = new System.Windows.Forms.Padding(3);
+            this.displayOpenIncidentsPage.Size = new System.Drawing.Size(788, 474);
+            this.displayOpenIncidentsPage.TabIndex = 3;
+            this.displayOpenIncidentsPage.Text = "Display Open Incidents";
+            this.displayOpenIncidentsPage.UseVisualStyleBackColor = true;
+            this.displayOpenIncidentsPage.Click += new System.EventHandler(this.DisplayOpenIncidents);
+            // 
+            // displayOpenIncidents1
+            // 
+            this.displayOpenIncidents1.AutoSize = true;
+            this.displayOpenIncidents1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.displayOpenIncidents1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.displayOpenIncidents1.Location = new System.Drawing.Point(3, 3);
+            this.displayOpenIncidents1.Name = "displayOpenIncidents1";
+            this.displayOpenIncidents1.Size = new System.Drawing.Size(782, 468);
+            this.displayOpenIncidents1.TabIndex = 0;
+            this.displayOpenIncidents1.Load += new System.EventHandler(this.DisplayOpenIncidents);
             // 
             // incidentTab
             // 
@@ -163,6 +190,8 @@
             this.Name = "MainFormTabbed";
             this.Text = "Main Form";
             this.mainTabControl.ResumeLayout(false);
+            this.displayOpenIncidentsPage.ResumeLayout(false);
+            this.displayOpenIncidentsPage.PerformLayout();
             this.incidentTab.ResumeLayout(false);
             this.incidentTab.PerformLayout();
             this.searchTab.ResumeLayout(false);
@@ -187,5 +216,7 @@
         private UserControls.IncidentControl incidentControl1;
         private UserControls.SearchControl searchControl1;
         private UserControls.AddIncidentControl addIncidentControl1;
+        private System.Windows.Forms.TabPage displayOpenIncidentsPage;
+        private UserControls.DisplayOpenIncidents displayOpenIncidents1;
     }
 }
