@@ -24,7 +24,7 @@ namespace TechSupport.UserControls
             this.incidentController = new IncidentController();
         }
 
-        private void addIncidentButton_Click(object sender, EventArgs e)
+        private void AddIncidentButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -46,6 +46,11 @@ namespace TechSupport.UserControls
             this.customerIDTextBox.Text = "";
             this.titleTextBox.Text = "";
             this.descriptionTextBox.Text = "";
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

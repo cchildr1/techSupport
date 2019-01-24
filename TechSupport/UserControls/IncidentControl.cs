@@ -20,14 +20,17 @@ namespace TechSupport.UserControls
             InitializeComponent();
             this.incidentController = new IncidentController();
             this.RefreshDataGrid();
+
         }
-        private void RefreshDataGrid()
+        /// <summary>
+        /// Refreshes data grid display
+        /// </summary>
+        public void RefreshDataGrid()
         {
             this.incidentDataGridView.DataSource = null;
             this.incidentDataGridView.DataSource = this.incidentController.GetIncidents();
         }
 
-   
     }
 }
 

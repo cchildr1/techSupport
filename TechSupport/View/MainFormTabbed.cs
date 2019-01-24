@@ -18,9 +18,14 @@ namespace TechSupport.View
             this.usernameLabel.Text = userName;
         }
 
-        private void logoutLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LogoutLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         { 
             this.Close();
+        }
+
+        private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            incidentControl1.RefreshDataGrid();
         }
     }
 }

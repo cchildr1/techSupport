@@ -63,6 +63,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(428, 452);
             this.tableLayoutPanel1.TabIndex = 5;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // label3
             // 
@@ -138,6 +139,7 @@
             this.addIncidentButton.TabIndex = 4;
             this.addIncidentButton.Text = "Add Incident";
             this.addIncidentButton.UseVisualStyleBackColor = true;
+            this.addIncidentButton.Click += new System.EventHandler(this.AddIncidentButton_Click);
             // 
             // clearButton
             // 
@@ -150,6 +152,7 @@
             this.clearButton.TabIndex = 5;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // AddIncidentControl
             // 
