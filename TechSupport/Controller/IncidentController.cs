@@ -14,6 +14,7 @@ namespace TechSupport.Controller
     class IncidentController
     {
         private IncidentDAL incidentSource;
+        private IncidentDBDAL incidentSourceDB;
 
         /// <summary>
         /// Constructor that initializes the DAL
@@ -21,6 +22,7 @@ namespace TechSupport.Controller
         public IncidentController()
         {
             this.incidentSource = new IncidentDAL();
+            this.incidentSourceDB = new IncidentDBDAL();
         }
 
         /// <summary>
@@ -61,6 +63,11 @@ namespace TechSupport.Controller
             }
 
             return outputList;
+        }
+
+        public List<IncidentFromDB> GetOpenIncidents()
+        {
+            return this.incidentSourceDB.GetOpenIncidents();
         }
     }
 }

@@ -7,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace TechSupport.DAL
 {
+    /// <summary>
+    /// Returns the sqlConnection to the TechSupport DB
+    /// </summary>
     public static class TechSupportDBConnection
     {
+        /// <summary>
+        /// connections to TechSupport DB
+        /// </summary>
+        /// <returns>SQLConnection to DB</returns>
         public static SqlConnection GetConnection()
         {
             string connectionString =
