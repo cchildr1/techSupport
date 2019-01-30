@@ -24,10 +24,10 @@ namespace TechSupport.View
                 messageLabel.Text = "";
                 this.Hide();
                 MainFormTabbed mainForm = new MainFormTabbed(this.usernameTextBox.Text);
-                mainForm.ShowDialog();
+                mainForm.Show();
                 this.usernameTextBox.Clear();
                 this.passwordTextBox.Clear();
-                this.Show();
+                this.Close();
             }
             else
             {

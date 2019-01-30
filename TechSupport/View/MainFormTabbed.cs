@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TechSupport.View
@@ -19,8 +12,8 @@ namespace TechSupport.View
         }
 
         private void LogoutLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        { 
-            this.Close();
+        {
+            Application.Exit();
         }
 
         private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -31,6 +24,11 @@ namespace TechSupport.View
         private void DisplayOpenIncidents(object sender, EventArgs e)
         {
             displayOpenIncidents1.getOpenIncidents();
+        }
+
+        private void MainFormTabbed_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

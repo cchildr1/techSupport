@@ -189,6 +189,7 @@
             this.Controls.Add(this.mainTabControl);
             this.Name = "MainFormTabbed";
             this.Text = "Main Form";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFormTabbed_FormClosed);
             this.mainTabControl.ResumeLayout(false);
             this.displayOpenIncidentsPage.ResumeLayout(false);
             this.displayOpenIncidentsPage.PerformLayout();

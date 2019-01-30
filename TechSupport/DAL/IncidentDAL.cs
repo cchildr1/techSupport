@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TechSupport.Model;
 
 namespace TechSupport.DAL
@@ -38,6 +36,11 @@ namespace TechSupport.DAL
                 throw new ArgumentNullException("Incident cannot be null");
             }
             _incidents.Add(incident);
+        }
+
+        public List<Incident> Search(int customerID)
+        {
+            return _incidents.Where(incident => incident.CustomerID == customerID).ToList();
         }
     }
 }

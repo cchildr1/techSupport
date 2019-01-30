@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TechSupport.Controller;
 using TechSupport.Model;
@@ -34,6 +27,10 @@ namespace TechSupport.UserControls
 
                 this.incidentController.Add(new Incident(title, description, customerID));
 
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Invalid Input for Customer ID!" + Environment.NewLine + ex.Message + Environment.NewLine + "Customer ID must be a whole number.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

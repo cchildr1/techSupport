@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TechSupport.Model;
 using TechSupport.DAL;
+using TechSupport.Model;
 
 namespace TechSupport.Controller
 {
@@ -54,15 +51,8 @@ namespace TechSupport.Controller
         /// <param name="customerID"> customer ID that is being searched</param>
         /// <returns>list of all incidents with particular customer id</returns>
         public List<Incident> Search(int customerID)
-        { 
-            IEnumerable<Incident> queryIncidents = this.incidentSource.GetIncidents().Where(incident => incident.CustomerID == customerID);
-            List<Incident> outputList = new List<Incident>();
-            foreach(Incident incident in queryIncidents)
-            {
-                outputList.Add(incident);
-            }
-
-            return outputList;
+        {
+            return this.incidentSource.Search(customerID);
         }
 
         public List<IncidentFromDB> GetOpenIncidents()
