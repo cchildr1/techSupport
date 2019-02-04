@@ -4,15 +4,15 @@ namespace TechSupport.Model
 {
     class IncidentFromDB
     {
-        public String ProductCode { get; set; }
+        public string ProductCode { get; set; }
 
         public DateTime DateOpened { get; set; }
 
-        public String Customer { get; set;}
+        public string Customer { get; set;}
 
-        public String Technician { get; set; }
+        public string Technician { get; set; }
 
-        public String Title { get; set; }
+        public string Title { get; set; }
 
         public IncidentFromDB()
         {
@@ -20,6 +20,7 @@ namespace TechSupport.Model
             this.Customer = "";
             this.Technician = "";
             this.Title = "";
+            this.DateOpened = DateTime.Now;
         }
     }
 }

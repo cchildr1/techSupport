@@ -18,7 +18,7 @@ namespace TechSupport.View
 
         private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            incidentControl1.RefreshDataGrid();
+            displayOpenIncidents1.getOpenIncidents();
         }
 
         private void DisplayOpenIncidents(object sender, EventArgs e)

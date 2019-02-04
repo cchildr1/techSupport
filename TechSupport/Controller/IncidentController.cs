@@ -54,10 +54,29 @@ namespace TechSupport.Controller
         {
             return this.incidentSource.Search(customerID);
         }
-
+        /// <summary>
+        /// Returns list of open incidents from database connection
+        /// </summary>
+        /// <returns>List of incidents from database</returns>
         public List<IncidentFromDB> GetOpenIncidents()
         {
             return this.incidentSourceDB.GetOpenIncidents();
+        }
+        /// <summary>
+        /// Returns a list of products from the database
+        /// </summary>
+        /// <returns>list of products</returns>
+        public List<Product> GetProducts()
+        {
+            return this.incidentSourceDB.getProducts();
+        }
+        /// <summary>
+        /// Returns a list of customers from the database
+        /// </summary>
+        /// <returns>list of customers</returns>
+        public List<Customer> GetCustomers()
+        {
+            return this.incidentSourceDB.GetCustomers();
         }
     }
 }
