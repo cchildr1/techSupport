@@ -21,10 +21,10 @@ namespace TechSupport.Controller
         /// <returns>false if empty</returns>
         public static bool IsPresent(Control control)
         {
-            if (control.GetType().ToString() == "System.Windows.Form.TextBox")
+            if (control.GetType().ToString().Equals("System.Windows.Forms.TextBox"))
             {
                 TextBox textBox = (TextBox)control;
-                if (textBox.Text == "")
+                if (textBox.Text.Equals(""))
                 {
                     MessageBox.Show(textBox.Tag.ToString() + " is a required field.", title);
                     textBox.Focus();

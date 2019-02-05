@@ -144,7 +144,7 @@
             this.tbDescription.Name = "tbDescription";
             this.tbDescription.Size = new System.Drawing.Size(330, 214);
             this.tbDescription.TabIndex = 7;
-            this.tbDescription.Tag = "S";
+            this.tbDescription.Tag = "Description";
             // 
             // lbDescription
             // 

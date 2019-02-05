@@ -30,11 +30,8 @@ namespace TechSupport.UserControls
         private void btnAddIncident_Click(object sender, EventArgs e)
         {
             if(this.IsValidData())
-            {
+            { 
                 controller.AddIncident((int)cbCustomer.SelectedValue, (string)cbProduct.SelectedValue, tbTitle.Text, tbDescription.Text);
-            } else
-            {
-                MessageBox.Show("All fields are required.");
             }
         }
 
