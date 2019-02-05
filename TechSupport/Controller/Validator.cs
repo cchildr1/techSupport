@@ -12,9 +12,8 @@ namespace TechSupport.Controller
     /// </summary>
     class Validator
     {
-        private static string title = "Entry Error";
+        private static readonly string title = "Entry Error";
 
-        public static string Title { get; set; }
         /// <summary>
         /// Checks text box and combo box to make sure they aren't empty
         /// </summary>
@@ -27,7 +26,7 @@ namespace TechSupport.Controller
                 TextBox textBox = (TextBox)control;
                 if (textBox.Text == "")
                 {
-                    MessageBox.Show(textBox.Tag.ToString() + " is a required field.", Title);
+                    MessageBox.Show(textBox.Tag.ToString() + " is a required field.", title);
                     textBox.Focus();
                     return false;
                 }
@@ -42,7 +41,7 @@ namespace TechSupport.Controller
                 ComboBox comboBox = (ComboBox)control;
                 if (comboBox.SelectedIndex == -1)
                 {
-                    MessageBox.Show(comboBox.Tag.ToString() + " is a required field.", Title);
+                    MessageBox.Show(comboBox.Tag.ToString() + " is a required field.", title);
                     comboBox.Focus();
                     return false;
                 }

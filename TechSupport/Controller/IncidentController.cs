@@ -10,8 +10,8 @@ namespace TechSupport.Controller
     /// </summary>
     class IncidentController
     {
-        private IncidentDAL incidentSource;
-        private IncidentDBDAL incidentSourceDB;
+        private readonly IncidentDAL incidentSource;
+        private readonly IncidentDBDAL incidentSourceDB;
 
         /// <summary>
         /// Constructor that initializes the DAL
@@ -68,7 +68,7 @@ namespace TechSupport.Controller
         /// <returns>list of products</returns>
         public List<Product> GetProducts()
         {
-            return this.incidentSourceDB.getProducts();
+            return this.incidentSourceDB.GetProducts();
         }
         /// <summary>
         /// Returns a list of customers from the database
@@ -77,6 +77,19 @@ namespace TechSupport.Controller
         public List<Customer> GetCustomers()
         {
             return this.incidentSourceDB.GetCustomers();
+        }
+
+        /// <summary>
+        /// Adds an incident to the database by calling method in DAL
+        /// </summary>
+        /// <param name="customerID">Customer ID #</param>
+        /// <param name="productCode">Product Code</param>
+        /// <param name="title">Title</param>
+        /// <param name="description">Description of Incident</param>
+        /// <returns>int for query result</returns>
+        public int AddIncident(int customerID, string productCode, string title, string description)
+        {
+            return this.incidentSourceDB.AddIncident(customerID, productCode, title, description);
         }
     }
 }

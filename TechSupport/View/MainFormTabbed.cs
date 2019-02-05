@@ -30,5 +30,10 @@ namespace TechSupport.View
         {
             Application.Exit();
         }
+
+        private void addIncidentDBControl1_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

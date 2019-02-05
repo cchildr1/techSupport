@@ -34,9 +34,9 @@
             this.lbProduct = new System.Windows.Forms.Label();
             this.cbProduct = new System.Windows.Forms.ComboBox();
             this.lbTitle = new System.Windows.Forms.Label();
-            this.lbDescription = new System.Windows.Forms.Label();
             this.tbTitle = new System.Windows.Forms.TextBox();
             this.tbDescription = new System.Windows.Forms.TextBox();
+            this.lbDescription = new System.Windows.Forms.Label();
             this.btnAddIncident = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
@@ -84,11 +84,13 @@
             // cbCustomer
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.cbCustomer, 2);
+            this.cbCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCustomer.FormattingEnabled = true;
             this.cbCustomer.Location = new System.Drawing.Point(86, 3);
             this.cbCustomer.Name = "cbCustomer";
             this.cbCustomer.Size = new System.Drawing.Size(330, 21);
             this.cbCustomer.TabIndex = 1;
+            this.cbCustomer.Tag = "Customer";
             // 
             // lbProduct
             // 
@@ -105,11 +107,13 @@
             // cbProduct
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.cbProduct, 2);
+            this.cbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProduct.FormattingEnabled = true;
             this.cbProduct.Location = new System.Drawing.Point(86, 28);
             this.cbProduct.Name = "cbProduct";
             this.cbProduct.Size = new System.Drawing.Size(330, 21);
             this.cbProduct.TabIndex = 3;
+            this.cbProduct.Tag = "Product";
             // 
             // lbTitle
             // 
@@ -123,6 +127,25 @@
             this.lbTitle.Text = "Title:";
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // tbTitle
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.tbTitle, 2);
+            this.tbTitle.Location = new System.Drawing.Point(86, 55);
+            this.tbTitle.Name = "tbTitle";
+            this.tbTitle.Size = new System.Drawing.Size(330, 20);
+            this.tbTitle.TabIndex = 6;
+            this.tbTitle.Tag = "Title";
+            // 
+            // tbDescription
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.tbDescription, 2);
+            this.tbDescription.Location = new System.Drawing.Point(86, 82);
+            this.tbDescription.Multiline = true;
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.Size = new System.Drawing.Size(330, 214);
+            this.tbDescription.TabIndex = 7;
+            this.tbDescription.Tag = "S";
+            // 
             // lbDescription
             // 
             this.lbDescription.AutoSize = true;
@@ -133,23 +156,6 @@
             this.lbDescription.Text = "Description:";
             this.lbDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tbTitle
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.tbTitle, 2);
-            this.tbTitle.Location = new System.Drawing.Point(86, 55);
-            this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(330, 20);
-            this.tbTitle.TabIndex = 6;
-            // 
-            // tbDescription
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.tbDescription, 2);
-            this.tbDescription.Location = new System.Drawing.Point(86, 82);
-            this.tbDescription.Multiline = true;
-            this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(330, 214);
-            this.tbDescription.TabIndex = 7;
-            // 
             // btnAddIncident
             // 
             this.btnAddIncident.Location = new System.Drawing.Point(86, 302);
@@ -158,6 +164,7 @@
             this.btnAddIncident.TabIndex = 8;
             this.btnAddIncident.Text = "Add Incident";
             this.btnAddIncident.UseVisualStyleBackColor = true;
+            this.btnAddIncident.Click += new System.EventHandler(this.btnAddIncident_Click);
             // 
             // btnClear
             // 
@@ -167,6 +174,7 @@
             this.btnClear.TabIndex = 9;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // AddIncidentDBControl
             // 

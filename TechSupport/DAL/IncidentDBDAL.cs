@@ -52,11 +52,6 @@ namespace TechSupport.DAL
             return incidentList;
         }
 
-        internal void AddIncident(IncidentFromDB incident)
-        {
-
-        }
-
         internal List<Customer> GetCustomers()
         {
             List<Customer> customerList = new List<Customer>();
@@ -90,7 +85,7 @@ namespace TechSupport.DAL
             return customerList;
         }
 
-        public List<Product> getProducts()
+        internal List<Product> GetProducts()
         {
             List<Product> productList = new List<Product>();
             string selectStatement = "SELECT * FROM Products;";
@@ -116,6 +111,34 @@ namespace TechSupport.DAL
                 }
             }
             return productList;
+        }
+
+        internal int AddIncident(int customerID, string productCode, string title, string description)
+        {
+            SqlConnection connection = TechSupportDBConnection.GetConnection();
+
+            string insertStatement = "INSERT Incidents" +
+                "(CustomerID, ProductCode, DateOpened, Title, Description)" +
+                "VALUES (@CustomerID, @ProductCode, getdate(), @Title, @Description);";
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+            insertCommand.Parameters.AddWithValue("@CustomerID", customerID);
+            insertCommand.Parameters.AddWithValue("@ProductCode", productCode);
+            insertCommand.Parameters.AddWithValue("@Title", title);
+            insertCommand.Parameters.AddWithValue("@Description", description);
+
+            try
+            {
+                connection.Open();
+                int result = insertCommand.ExecuteNonQuery();
+                return result;
+            } catch (SqlException ex)
+            {
+                throw ex;
+            } finally
+            {
+                connection.Close();
+            }
+
         }
     }
 }
