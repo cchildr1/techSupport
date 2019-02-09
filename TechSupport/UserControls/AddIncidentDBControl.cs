@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TechSupport.Controller;
 
@@ -32,17 +25,18 @@ namespace TechSupport.UserControls
         private void btnAddIncident_Click(object sender, EventArgs e)
         {
             if(this.IsValidData())
-            { 
-                controller.AddIncident((int)cbCustomer.SelectedValue, (string)cbProduct.SelectedValue, tbTitle.Text, tbDescription.Text);
+            {
+                if (controller.AddIncident((int)cbCustomer.SelectedValue, (string)cbProduct.SelectedValue, tbTitle.Text, tbDescription.Text) > 0)
+                {
+                    MessageBox.Show("Added Incident.", "Success!");
+                    this.clear();
+                }
             }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            tbDescription.Clear();
-            tbTitle.Clear();
-            cbCustomer.SelectedIndex = -1;
-            cbProduct.SelectedIndex = -1;
+            this.clear();
         }
 
         private bool IsValidData()
@@ -51,6 +45,14 @@ namespace TechSupport.UserControls
                 Validator.IsPresent(cbProduct) &&
                 Validator.IsPresent(tbTitle) &&
                 Validator.IsPresent(tbDescription);
+        }
+
+        private void clear()
+        {
+            tbDescription.Clear();
+            tbTitle.Clear();
+            cbCustomer.SelectedIndex = -1;
+            cbProduct.SelectedIndex = -1;
         }
     }
 }
