@@ -14,7 +14,9 @@ namespace TechSupport.UserControls
     public partial class AddIncidentDBControl : UserControl
     {
         private IncidentController controller;
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public AddIncidentDBControl()
         {
             InitializeComponent();

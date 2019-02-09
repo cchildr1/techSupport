@@ -24,14 +24,14 @@ namespace TechSupport.UserControls
                 lvOpenIncidents.Items.Clear();
             }
 
-            List<IncidentFromDB> incidentList;
+            List<Incident> incidentList;
             try
             {
                 incidentList = this.incidentController.GetOpenIncidents();
 
                 if (incidentList.Count > 0)
                 {
-                    IncidentFromDB incident;
+                    Incident incident;
                     for (int i = 0; i < incidentList.Count; i++)
                     {
                         incident = incidentList[i];

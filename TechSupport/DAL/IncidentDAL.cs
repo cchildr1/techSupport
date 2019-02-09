@@ -10,17 +10,17 @@ namespace TechSupport.DAL
     /// </summary>
     class IncidentDAL
     {
-        private static List<Incident> _incidents = new List<Incident>
+        private static List<IncidentInMemory> _incidents = new List<IncidentInMemory>
         {
-            new Incident("Test1", "this is a test", 1),
-            new Incident("Test2", "this is also a test", 1)
+            new IncidentInMemory("Test1", "this is a test", 1),
+            new IncidentInMemory("Test2", "this is also a test", 1)
         }; 
 
         /// <summary>
         /// Returns the list containing all the incidents
         /// </summary>
         /// <returns> a list of incident objects</returns>
-        public List<Incident> GetIncidents()
+        public List<IncidentInMemory> GetIncidents()
         {
             return _incidents;
         }
@@ -29,7 +29,7 @@ namespace TechSupport.DAL
         /// Adds an incident to the list
         /// </summary>
         /// <param name="incident">incident object to add</param>
-        public void Add(Incident incident)
+        public void Add(IncidentInMemory incident)
         {
             if (incident == null)
             {
@@ -38,7 +38,7 @@ namespace TechSupport.DAL
             _incidents.Add(incident);
         }
 
-        public List<Incident> Search(int customerID)
+        public List<IncidentInMemory> Search(int customerID)
         {
             return _incidents.Where(incident => incident.CustomerID == customerID).ToList();
         }

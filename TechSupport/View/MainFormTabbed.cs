@@ -5,15 +5,18 @@ namespace TechSupport.View
 {
     public partial class MainFormTabbed : Form
     {
-        public MainFormTabbed(String userName)
+
+        public LoginForm loginForm { get; set; }
+
+        public MainFormTabbed()
         {
             InitializeComponent();
-            this.usernameLabel.Text = userName;
         }
 
         private void LogoutLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            this.loginForm.Show();
         }
 
         private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -34,6 +37,14 @@ namespace TechSupport.View
         private void addIncidentDBControl1_Load(object sender, EventArgs e)
         {
             
+        }
+        /// <summary>
+        /// Sets username label next to logout link
+        /// </summary>
+        /// <param name="userName">username to set</param>
+        public void setUserNameText(string userName)
+        {
+            usernameLabel.Text = userName;
         }
     }
 }

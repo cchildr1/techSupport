@@ -1,20 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TechSupport.View
 {
     public partial class LoginForm : Form
     {
-        public LoginForm()
+
+        private MainFormTabbed mainFormTabbed;
+        /// <summary>
+        /// Constructor that adds a main form to the login form.
+        /// </summary>
+        /// <param name="mainForm"></param>
+        public LoginForm(MainFormTabbed mainForm)
         {
             InitializeComponent();
+            this.mainFormTabbed = mainForm;
         }
 
         private void loginButton_Click(object sender, EventArgs e)
@@ -22,12 +23,12 @@ namespace TechSupport.View
             if (usernameTextBox.Text.Equals("Jane") && passwordTextBox.Text.Equals("test1234"))
             {
                 messageLabel.Text = "";
+                this.mainFormTabbed.setUserNameText(usernameTextBox.Text);
                 this.Hide();
-                MainFormTabbed mainForm = new MainFormTabbed(this.usernameTextBox.Text);
-                mainForm.Show();
+                this.mainFormTabbed.Show();
                 this.usernameTextBox.Clear();
                 this.passwordTextBox.Clear();
-                this.Close();
+                
             }
             else
             {

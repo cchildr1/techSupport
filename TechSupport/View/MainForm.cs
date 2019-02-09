@@ -33,7 +33,7 @@ namespace TechSupport.View
         {
            
             this.Hide();
-            new LoginForm().Show();
+            
             this.Close();
         }
 

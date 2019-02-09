@@ -52,8 +52,8 @@
     <Compile Include="DAL\IncidentDBDAL.cs" />
     <Compile Include="DAL\TechSupportDBConnection.cs" />
     <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\IncidentInMemory.cs" />
     <Compile Include="Model\Incident.cs" />
-    <Compile Include="Model\IncidentFromDB.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

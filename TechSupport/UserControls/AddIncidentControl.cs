@@ -25,7 +25,7 @@ namespace TechSupport.UserControls
                 var title = this.titleTextBox.Text;
                 var description = this.descriptionTextBox.Text;
 
-                this.incidentController.Add(new Incident(title, description, customerID));
+                this.incidentController.Add(new IncidentInMemory(title, description, customerID));
 
             }
             catch (FormatException ex)

@@ -26,7 +26,7 @@ namespace TechSupport.Controller
         /// Returns the list of incidents stored in DAL
         /// </summary>
         /// <returns> list of incidents</returns>
-        public List<Incident> GetIncidents()
+        public List<IncidentInMemory> GetIncidents()
         {
             return this.incidentSource.GetIncidents();
         }
@@ -35,7 +35,7 @@ namespace TechSupport.Controller
         /// Adds a new incident to the list in the DAL
         /// </summary>
         /// <param name="incident">incident to add to the list</param>
-        public void Add(Incident incident)
+        public void Add(IncidentInMemory incident)
         {
             if (incident == null)
             {
@@ -50,7 +50,7 @@ namespace TechSupport.Controller
         /// </summary>
         /// <param name="customerID"> customer ID that is being searched</param>
         /// <returns>list of all incidents with particular customer id</returns>
-        public List<Incident> Search(int customerID)
+        public List<IncidentInMemory> Search(int customerID)
         {
             return this.incidentSource.Search(customerID);
         }
@@ -58,7 +58,7 @@ namespace TechSupport.Controller
         /// Returns list of open incidents from database connection
         /// </summary>
         /// <returns>List of incidents from database</returns>
-        public List<IncidentFromDB> GetOpenIncidents()
+        public List<Incident> GetOpenIncidents()
         {
             return this.incidentSourceDB.GetOpenIncidents();
         }

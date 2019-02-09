@@ -32,10 +32,10 @@
             this.displayOpenIncidentsPage = new System.Windows.Forms.TabPage();
             this.displayOpenIncidents1 = new TechSupport.UserControls.DisplayOpenIncidents();
             this.addTab = new System.Windows.Forms.TabPage();
+            this.addIncidentDBControl1 = new TechSupport.UserControls.AddIncidentDBControl();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.logoutLink = new System.Windows.Forms.LinkLabel();
-            this.addIncidentDBControl1 = new TechSupport.UserControls.AddIncidentDBControl();
             this.mainTabControl.SuspendLayout();
             this.displayOpenIncidentsPage.SuspendLayout();
             this.addTab.SuspendLayout();
@@ -90,6 +90,16 @@
             this.addTab.Text = "Add Incident";
             this.addTab.UseVisualStyleBackColor = true;
             // 
+            // addIncidentDBControl1
+            // 
+            this.addIncidentDBControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.addIncidentDBControl1.Location = new System.Drawing.Point(0, 0);
+            this.addIncidentDBControl1.Name = "addIncidentDBControl1";
+            this.addIncidentDBControl1.Size = new System.Drawing.Size(788, 78);
+            this.addIncidentDBControl1.TabIndex = 0;
+            this.addIncidentDBControl1.Load += new System.EventHandler(this.addIncidentDBControl1_Load);
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -122,16 +132,6 @@
             this.logoutLink.Text = "Log Out";
             this.logoutLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLink_LinkClicked);
             // 
-            // addIncidentDBControl1
-            // 
-            this.addIncidentDBControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.addIncidentDBControl1.Location = new System.Drawing.Point(0, 0);
-            this.addIncidentDBControl1.Name = "addIncidentDBControl1";
-            this.addIncidentDBControl1.Size = new System.Drawing.Size(788, 478);
-            this.addIncidentDBControl1.TabIndex = 0;
-            this.addIncidentDBControl1.Load += new System.EventHandler(this.addIncidentDBControl1_Load);
-            // 
             // MainFormTabbed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,6 +140,7 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.mainTabControl);
             this.Name = "MainFormTabbed";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Form";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFormTabbed_FormClosed);
             this.mainTabControl.ResumeLayout(false);

@@ -14,9 +14,12 @@ namespace TechSupport
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form loginForm = new LoginForm();
-            loginForm.Show();
-            Application.Run();
+
+            // Create LoginForm and mainform here
+            MainFormTabbed mainForm = new MainFormTabbed();
+            LoginForm loginForm = new LoginForm(mainForm);
+            mainForm.loginForm = loginForm;
+            Application.Run(loginForm);
         }
     }
 }

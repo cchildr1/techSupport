@@ -14,9 +14,9 @@ namespace TechSupport.DAL
         /// Returns the list of incidents with no close date
         /// </summary>
         /// <returns>List of open incidents</returns>
-        internal List<IncidentFromDB> GetOpenIncidents()
+        internal List<Incident> GetOpenIncidents()
         {
-            List<IncidentFromDB> incidentList = new List<IncidentFromDB>();
+            List<Incident> incidentList = new List<Incident>();
 
             string selectStatement =
                 "SELECT i.ProductCode, i.DateOpened, c.Name as Customer, t.Name as Technician, i.Title " +
@@ -35,7 +35,7 @@ namespace TechSupport.DAL
                     {
                         while (reader.Read())
                         {
-                            IncidentFromDB incident = new IncidentFromDB
+                            Incident incident = new Incident
                             {
                                 ProductCode = reader["ProductCode"].ToString(),
                                 DateOpened = (DateTime)reader["DateOpened"],
@@ -51,7 +51,10 @@ namespace TechSupport.DAL
             }
             return incidentList;
         }
-
+        /// <summary>
+        /// Pulls list of customers from DB
+        /// </summary>
+        /// <returns>List of customers</returns>
         internal List<Customer> GetCustomers()
         {
             List<Customer> customerList = new List<Customer>();
@@ -85,6 +88,10 @@ namespace TechSupport.DAL
             return customerList;
         }
 
+        /// <summary>
+        /// Pulls products from DB
+        /// </summary>
+        /// <returns>List of Products</returns>
         internal List<Product> GetProducts()
         {
             List<Product> productList = new List<Product>();
@@ -112,7 +119,14 @@ namespace TechSupport.DAL
             }
             return productList;
         }
-
+        /// <summary>
+        /// Adds an incident to the databse
+        /// </summary>
+        /// <param name="customerID">customerID as int</param>
+        /// <param name="productCode">ProductCode as string</param>
+        /// <param name="title">Title as string</param>
+        /// <param name="description">Description as string</param>
+        /// <returns>returns int result based on whether query executed</returns>
         internal int AddIncident(int customerID, string productCode, string title, string description)
         {
             SqlConnection connection = TechSupportDBConnection.GetConnection();
