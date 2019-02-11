@@ -28,19 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.mainTabControl = new System.Windows.Forms.TabControl();
+            this.displayOpenIncidentsPage = new System.Windows.Forms.TabPage();
+            this.displayOpenIncidents1 = new TechSupport.UserControls.DisplayOpenIncidents();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.logoutLink = new System.Windows.Forms.LinkLabel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.incidentDataGridView = new System.Windows.Forms.DataGridView();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.searchIncidentButton = new System.Windows.Forms.Button();
-            this.AddIncidentButton = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.addIncidentDBControl1 = new TechSupport.UserControls.AddIncidentControl();
+            this.addTab = new System.Windows.Forms.TabPage();
+            this.addIncidentDBControl2 = new TechSupport.UserControls.AddIncidentControl();
+            this.mainTabControl.SuspendLayout();
+            this.displayOpenIncidentsPage.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.incidentDataGridView)).BeginInit();
-            this.flowLayoutPanel2.SuspendLayout();
+            this.addTab.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // mainTabControl
+            // 
+            this.mainTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainTabControl.Controls.Add(this.displayOpenIncidentsPage);
+            this.mainTabControl.Controls.Add(this.addTab);
+            this.mainTabControl.Location = new System.Drawing.Point(12, 44);
+            this.mainTabControl.Name = "mainTabControl";
+            this.mainTabControl.SelectedIndex = 0;
+            this.mainTabControl.Size = new System.Drawing.Size(796, 500);
+            this.mainTabControl.TabIndex = 0;
+            this.mainTabControl.SelectedIndexChanged += new System.EventHandler(this.mainTabControl_SelectedIndexChanged);
+            // 
+            // displayOpenIncidentsPage
+            // 
+            this.displayOpenIncidentsPage.Controls.Add(this.displayOpenIncidents1);
+            this.displayOpenIncidentsPage.Location = new System.Drawing.Point(4, 22);
+            this.displayOpenIncidentsPage.Name = "displayOpenIncidentsPage";
+            this.displayOpenIncidentsPage.Padding = new System.Windows.Forms.Padding(3);
+            this.displayOpenIncidentsPage.Size = new System.Drawing.Size(788, 474);
+            this.displayOpenIncidentsPage.TabIndex = 3;
+            this.displayOpenIncidentsPage.Text = "Display Open Incidents";
+            this.displayOpenIncidentsPage.UseVisualStyleBackColor = true;
+            this.displayOpenIncidentsPage.Click += new System.EventHandler(this.DisplayOpenIncidents);
+            // 
+            // displayOpenIncidents1
+            // 
+            this.displayOpenIncidents1.AutoSize = true;
+            this.displayOpenIncidents1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.displayOpenIncidents1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.displayOpenIncidents1.Location = new System.Drawing.Point(3, 3);
+            this.displayOpenIncidents1.Name = "displayOpenIncidents1";
+            this.displayOpenIncidents1.Size = new System.Drawing.Size(782, 468);
+            this.displayOpenIncidents1.TabIndex = 0;
+            this.displayOpenIncidents1.Load += new System.EventHandler(this.DisplayOpenIncidents);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.Controls.Add(this.usernameLabel);
+            this.flowLayoutPanel1.Controls.Add(this.logoutLink);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(625, 12);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(183, 26);
+            this.flowLayoutPanel1.TabIndex = 1;
             // 
             // usernameLabel
             // 
@@ -62,110 +110,68 @@
             this.logoutLink.TabIndex = 1;
             this.logoutLink.TabStop = true;
             this.logoutLink.Text = "Log Out";
-            this.logoutLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.logoutLink_LinkClicked);
+            this.logoutLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLink_LinkClicked);
             // 
-            // tableLayoutPanel1
+            // addIncidentDBControl1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.incidentDataGridView, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 0, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(776, 426);
-            this.tableLayoutPanel1.TabIndex = 2;
+            this.addIncidentDBControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.addIncidentDBControl1.Location = new System.Drawing.Point(0, 0);
+            this.addIncidentDBControl1.Name = "addIncidentDBControl1";
+            this.addIncidentDBControl1.Size = new System.Drawing.Size(788, 0);
+            this.addIncidentDBControl1.TabIndex = 0;
+            this.addIncidentDBControl1.Load += new System.EventHandler(this.addIncidentDBControl1_Load);
             // 
-            // flowLayoutPanel1
+            // addTab
             // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.Controls.Add(this.usernameLabel);
-            this.flowLayoutPanel1.Controls.Add(this.logoutLink);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(590, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(183, 26);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.addTab.Controls.Add(this.addIncidentDBControl2);
+            this.addTab.Controls.Add(this.addIncidentDBControl1);
+            this.addTab.Location = new System.Drawing.Point(4, 22);
+            this.addTab.Name = "addTab";
+            this.addTab.Padding = new System.Windows.Forms.Padding(3);
+            this.addTab.Size = new System.Drawing.Size(788, 474);
+            this.addTab.TabIndex = 2;
+            this.addTab.Text = "Add Incident";
+            this.addTab.UseVisualStyleBackColor = true;
             // 
-            // incidentDataGridView
+            // addIncidentDBControl2
             // 
-            this.incidentDataGridView.AllowUserToAddRows = false;
-            this.incidentDataGridView.AllowUserToDeleteRows = false;
-            this.incidentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableLayoutPanel1.SetColumnSpan(this.incidentDataGridView, 2);
-            this.incidentDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.incidentDataGridView.Location = new System.Drawing.Point(3, 35);
-            this.incidentDataGridView.Name = "incidentDataGridView";
-            this.incidentDataGridView.ReadOnly = true;
-            this.incidentDataGridView.Size = new System.Drawing.Size(770, 352);
-            this.incidentDataGridView.TabIndex = 1;
+            this.addIncidentDBControl2.Location = new System.Drawing.Point(-4, 0);
+            this.addIncidentDBControl2.Name = "addIncidentDBControl2";
+            this.addIncidentDBControl2.Size = new System.Drawing.Size(792, 474);
+            this.addIncidentDBControl2.TabIndex = 1;
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel2.Controls.Add(this.searchIncidentButton);
-            this.flowLayoutPanel2.Controls.Add(this.AddIncidentButton);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 393);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(200, 30);
-            this.flowLayoutPanel2.TabIndex = 2;
-            // 
-            // searchIncidentButton
-            // 
-            this.searchIncidentButton.AutoSize = true;
-            this.searchIncidentButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.searchIncidentButton.Location = new System.Drawing.Point(3, 3);
-            this.searchIncidentButton.Name = "searchIncidentButton";
-            this.searchIncidentButton.Size = new System.Drawing.Size(97, 23);
-            this.searchIncidentButton.TabIndex = 1;
-            this.searchIncidentButton.Text = "Search Incidents";
-            this.searchIncidentButton.UseVisualStyleBackColor = true;
-            this.searchIncidentButton.Click += new System.EventHandler(this.searchIncidentButton_Click);
-            // 
-            // AddIncidentButton
-            // 
-            this.AddIncidentButton.Location = new System.Drawing.Point(106, 3);
-            this.AddIncidentButton.Name = "AddIncidentButton";
-            this.AddIncidentButton.Size = new System.Drawing.Size(75, 23);
-            this.AddIncidentButton.TabIndex = 0;
-            this.AddIncidentButton.Text = "Add Incident";
-            this.AddIncidentButton.UseVisualStyleBackColor = true;
-            this.AddIncidentButton.Click += new System.EventHandler(this.AddIncidentButton_Click);
-            // 
-            // MainForm
+            // MainFormTabbed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "MainForm";
-            this.Text = "Main";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormExit);
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.ClientSize = new System.Drawing.Size(820, 556);
+            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.mainTabControl);
+            this.Name = "MainFormTabbed";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Main Form";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFormTabbed_FormClosed);
+            this.mainTabControl.ResumeLayout(false);
+            this.displayOpenIncidentsPage.ResumeLayout(false);
+            this.displayOpenIncidentsPage.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.incidentDataGridView)).EndInit();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
+            this.addTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.TabControl mainTabControl;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.LinkLabel logoutLink;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.DataGridView incidentDataGridView;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Button searchIncidentButton;
-        private System.Windows.Forms.Button AddIncidentButton;
+        private System.Windows.Forms.TabPage displayOpenIncidentsPage;
+        private UserControls.DisplayOpenIncidents displayOpenIncidents1;
+        private System.Windows.Forms.TabPage addTab;
+        private UserControls.AddIncidentControl addIncidentDBControl2;
+        private UserControls.AddIncidentControl addIncidentDBControl1;
     }
 }

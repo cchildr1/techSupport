@@ -7,12 +7,12 @@ namespace TechSupport.View
     public partial class LoginForm : Form
     {
 
-        private MainFormTabbed mainFormTabbed;
+        private MainForm mainFormTabbed;
         /// <summary>
         /// Constructor that adds a main form to the login form.
         /// </summary>
         /// <param name="mainForm"></param>
-        public LoginForm(MainFormTabbed mainForm)
+        public LoginForm(MainForm mainForm)
         {
             InitializeComponent();
             this.mainFormTabbed = mainForm;

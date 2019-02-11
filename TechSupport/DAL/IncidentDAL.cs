@@ -1,46 +1,158 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Data.SqlClient;
 using TechSupport.Model;
 
 namespace TechSupport.DAL
 {
     /// <summary>
-    /// The Data Access Layer that interacts with a list for incidents
+    /// This is the DAL that deals with incidents. 
     /// </summary>
-    class IncidentDAL
+    public class IncidentDAL
     {
-        private static List<IncidentInMemory> _incidents = new List<IncidentInMemory>
-        {
-            new IncidentInMemory("Test1", "this is a test", 1),
-            new IncidentInMemory("Test2", "this is also a test", 1)
-        }; 
-
         /// <summary>
-        /// Returns the list containing all the incidents
+        /// Returns the list of incidents with no close date
         /// </summary>
-        /// <returns> a list of incident objects</returns>
-        public List<IncidentInMemory> GetIncidents()
+        /// <returns>List of open incidents</returns>
+        internal List<Incident> GetOpenIncidents()
         {
-            return _incidents;
-        }
+            List<Incident> incidentList = new List<Incident>();
 
-        /// <summary>
-        /// Adds an incident to the list
-        /// </summary>
-        /// <param name="incident">incident object to add</param>
-        public void Add(IncidentInMemory incident)
-        {
-            if (incident == null)
+            string selectStatement =
+                "SELECT i.ProductCode, i.DateOpened, c.Name as Customer, t.Name as Technician, i.Title " +
+                "from Incidents i " +
+                "LEFT JOIN Technicians t on i.TechID = t.TechID " +
+                "LEFT JOIN Customers c on i.CustomerID = c.CustomerID " +
+                "WHERE i.dateClosed IS NULL;";
+
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
             {
-                throw new ArgumentNullException("Incident cannot be null");
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Incident incident = new Incident
+                            {
+                                ProductCode = reader["ProductCode"].ToString(),
+                                DateOpened = (DateTime)reader["DateOpened"],
+                                Customer = reader["Customer"].ToString(),
+                                Technician = reader["Technician"].ToString(),
+                                Title = reader["Title"].ToString()
+                            };
+
+                            incidentList.Add(incident);
+                        }
+                    }
+                }
             }
-            _incidents.Add(incident);
+            return incidentList;
+        }
+        /// <summary>
+        /// Pulls list of customers from DB
+        /// </summary>
+        /// <returns>List of customers</returns>
+        internal List<Customer> GetCustomers()
+        {
+            List<Customer> customerList = new List<Customer>();
+            string selectStatement = "SELECT * FROM Customers;";
+
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            customerList.Add(new Customer
+                            {
+                                CustomerID = (int)reader["CustomerID"],
+                                Name = reader["Name"].ToString(),
+                                Address = reader["Address"].ToString(),
+                                City = reader["City"].ToString(),
+                                State = reader["State"].ToString(),
+                                ZipCode = reader["ZipCode"].ToString(),
+                                Phone = reader["Phone"].ToString(),
+                                Email = reader["Email"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+            return customerList;
         }
 
-        public List<IncidentInMemory> Search(int customerID)
+        /// <summary>
+        /// Pulls products from DB
+        /// </summary>
+        /// <returns>List of Products</returns>
+        internal List<Product> GetProducts()
         {
-            return _incidents.Where(incident => incident.CustomerID == customerID).ToList();
+            List<Product> productList = new List<Product>();
+            string selectStatement = "SELECT * FROM Products;";
+
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            productList.Add(new Product
+                            {
+                                ProductCode = reader["ProductCode"].ToString(),
+                                Name = reader["Name"].ToString(),
+                                Version = (decimal)reader["Version"],
+                                ReleaseDate = (DateTime)reader["ReleaseDate"]
+                            });
+                        }
+                    }
+                }
+            }
+            return productList;
+        }
+        /// <summary>
+        /// Adds an incident to the databse
+        /// </summary>
+        /// <param name="customerID">customerID as int</param>
+        /// <param name="productCode">ProductCode as string</param>
+        /// <param name="title">Title as string</param>
+        /// <param name="description">Description as string</param>
+        /// <returns>returns int result based on whether query executed</returns>
+        internal int AddIncident(int customerID, string productCode, string title, string description)
+        {
+            SqlConnection connection = TechSupportDBConnection.GetConnection();
+
+            string insertStatement = "INSERT Incidents" +
+                "(CustomerID, ProductCode, DateOpened, Title, Description)" +
+                "VALUES (@CustomerID, @ProductCode, getdate(), @Title, @Description);";
+            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
+            insertCommand.Parameters.AddWithValue("@CustomerID", customerID);
+            insertCommand.Parameters.AddWithValue("@ProductCode", productCode);
+            insertCommand.Parameters.AddWithValue("@Title", title);
+            insertCommand.Parameters.AddWithValue("@Description", description);
+
+            try
+            {
+                connection.Open();
+                int result = insertCommand.ExecuteNonQuery();
+                return result;
+            } catch (SqlException ex)
+            {
+                throw ex;
+            } finally
+            {
+                connection.Close();
+            }
+
         }
     }
 }

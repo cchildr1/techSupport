@@ -29,139 +29,160 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.titleTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.customerIDTextBox = new System.Windows.Forms.TextBox();
-            this.descriptionTextBox = new System.Windows.Forms.TextBox();
-            this.addIncidentButton = new System.Windows.Forms.Button();
-            this.clearButton = new System.Windows.Forms.Button();
+            this.lbCustomer = new System.Windows.Forms.Label();
+            this.cbCustomer = new System.Windows.Forms.ComboBox();
+            this.lbProduct = new System.Windows.Forms.Label();
+            this.cbProduct = new System.Windows.Forms.ComboBox();
+            this.lbTitle = new System.Windows.Forms.Label();
+            this.tbTitle = new System.Windows.Forms.TextBox();
+            this.tbDescription = new System.Windows.Forms.TextBox();
+            this.lbDescription = new System.Windows.Forms.Label();
+            this.btnAddIncident = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.titleTextBox, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.customerIDTextBox, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.descriptionTextBox, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.addIncidentButton, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.clearButton, 1, 4);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(7, 7);
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.Controls.Add(this.lbCustomer, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.cbCustomer, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lbProduct, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.cbProduct, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lbTitle, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tbTitle, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tbDescription, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lbDescription, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnAddIncident, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnClear, 2, 4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(428, 452);
-            this.tableLayoutPanel1.TabIndex = 5;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 220F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(419, 364);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // label3
+            // lbCustomer
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lbCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 52);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Description:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbCustomer.AutoSize = true;
+            this.lbCustomer.Location = new System.Drawing.Point(3, 0);
+            this.lbCustomer.Name = "lbCustomer";
+            this.lbCustomer.Size = new System.Drawing.Size(54, 25);
+            this.lbCustomer.TabIndex = 0;
+            this.lbCustomer.Text = "Customer:";
+            this.lbCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // cbCustomer
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tableLayoutPanel1.SetColumnSpan(this.cbCustomer, 2);
+            this.cbCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCustomer.FormattingEnabled = true;
+            this.cbCustomer.Location = new System.Drawing.Point(86, 3);
+            this.cbCustomer.Name = "cbCustomer";
+            this.cbCustomer.Size = new System.Drawing.Size(330, 21);
+            this.cbCustomer.TabIndex = 1;
+            this.cbCustomer.Tag = "Customer";
+            // 
+            // lbProduct
+            // 
+            this.lbProduct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 26);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Title:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbProduct.AutoSize = true;
+            this.lbProduct.Location = new System.Drawing.Point(3, 25);
+            this.lbProduct.Name = "lbProduct";
+            this.lbProduct.Size = new System.Drawing.Size(47, 27);
+            this.lbProduct.TabIndex = 2;
+            this.lbProduct.Text = "Product:";
+            this.lbProduct.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // titleTextBox
+            // cbProduct
             // 
-            this.titleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tableLayoutPanel1.SetColumnSpan(this.cbProduct, 2);
+            this.cbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbProduct.FormattingEnabled = true;
+            this.cbProduct.Location = new System.Drawing.Point(86, 28);
+            this.cbProduct.Name = "cbProduct";
+            this.cbProduct.Size = new System.Drawing.Size(330, 21);
+            this.cbProduct.TabIndex = 3;
+            this.cbProduct.Tag = "Product";
+            // 
+            // lbTitle
+            // 
+            this.lbTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.titleTextBox.Location = new System.Drawing.Point(217, 29);
-            this.titleTextBox.Name = "titleTextBox";
-            this.titleTextBox.Size = new System.Drawing.Size(100, 20);
-            this.titleTextBox.TabIndex = 2;
+            this.lbTitle.AutoSize = true;
+            this.lbTitle.Location = new System.Drawing.Point(3, 52);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(30, 27);
+            this.lbTitle.TabIndex = 4;
+            this.lbTitle.Text = "Title:";
+            this.lbTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // tbTitle
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 26);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Customer ID:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tableLayoutPanel1.SetColumnSpan(this.tbTitle, 2);
+            this.tbTitle.Location = new System.Drawing.Point(86, 55);
+            this.tbTitle.Name = "tbTitle";
+            this.tbTitle.Size = new System.Drawing.Size(330, 20);
+            this.tbTitle.TabIndex = 6;
+            this.tbTitle.Tag = "Title";
             // 
-            // customerIDTextBox
+            // tbDescription
             // 
-            this.customerIDTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.customerIDTextBox.Location = new System.Drawing.Point(217, 3);
-            this.customerIDTextBox.Name = "customerIDTextBox";
-            this.customerIDTextBox.Size = new System.Drawing.Size(100, 20);
-            this.customerIDTextBox.TabIndex = 1;
+            this.tableLayoutPanel1.SetColumnSpan(this.tbDescription, 2);
+            this.tbDescription.Location = new System.Drawing.Point(86, 82);
+            this.tbDescription.Multiline = true;
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.Size = new System.Drawing.Size(330, 214);
+            this.tbDescription.TabIndex = 7;
+            this.tbDescription.Tag = "Description";
             // 
-            // descriptionTextBox
+            // lbDescription
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.descriptionTextBox, 2);
-            this.descriptionTextBox.Location = new System.Drawing.Point(3, 68);
-            this.descriptionTextBox.Multiline = true;
-            this.descriptionTextBox.Name = "descriptionTextBox";
-            this.descriptionTextBox.Size = new System.Drawing.Size(422, 352);
-            this.descriptionTextBox.TabIndex = 3;
+            this.lbDescription.AutoSize = true;
+            this.lbDescription.Location = new System.Drawing.Point(3, 79);
+            this.lbDescription.Name = "lbDescription";
+            this.lbDescription.Size = new System.Drawing.Size(63, 13);
+            this.lbDescription.TabIndex = 5;
+            this.lbDescription.Text = "Description:";
+            this.lbDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // addIncidentButton
+            // btnAddIncident
             // 
-            this.addIncidentButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.addIncidentButton.Location = new System.Drawing.Point(3, 426);
-            this.addIncidentButton.Name = "addIncidentButton";
-            this.addIncidentButton.Size = new System.Drawing.Size(208, 23);
-            this.addIncidentButton.TabIndex = 4;
-            this.addIncidentButton.Text = "Add Incident";
-            this.addIncidentButton.UseVisualStyleBackColor = true;
-            this.addIncidentButton.Click += new System.EventHandler(this.AddIncidentButton_Click);
+            this.btnAddIncident.Location = new System.Drawing.Point(86, 302);
+            this.btnAddIncident.Name = "btnAddIncident";
+            this.btnAddIncident.Size = new System.Drawing.Size(75, 23);
+            this.btnAddIncident.TabIndex = 8;
+            this.btnAddIncident.Text = "Add Incident";
+            this.btnAddIncident.UseVisualStyleBackColor = true;
+            this.btnAddIncident.Click += new System.EventHandler(this.btnAddIncident_Click);
             // 
-            // clearButton
+            // btnClear
             // 
-            this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearButton.Location = new System.Drawing.Point(217, 426);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(208, 23);
-            this.clearButton.TabIndex = 5;
-            this.clearButton.Text = "Clear";
-            this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            this.btnClear.Location = new System.Drawing.Point(253, 302);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 9;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // AddIncidentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "AddIncidentControl";
-            this.Size = new System.Drawing.Size(438, 462);
+            this.Size = new System.Drawing.Size(425, 370);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -171,13 +192,15 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox titleTextBox;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox customerIDTextBox;
-        private System.Windows.Forms.TextBox descriptionTextBox;
-        private System.Windows.Forms.Button addIncidentButton;
-        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Label lbCustomer;
+        private System.Windows.Forms.ComboBox cbCustomer;
+        private System.Windows.Forms.Label lbProduct;
+        private System.Windows.Forms.ComboBox cbProduct;
+        private System.Windows.Forms.Label lbTitle;
+        private System.Windows.Forms.TextBox tbTitle;
+        private System.Windows.Forms.TextBox tbDescription;
+        private System.Windows.Forms.Label lbDescription;
+        private System.Windows.Forms.Button btnAddIncident;
+        private System.Windows.Forms.Button btnClear;
     }
 }

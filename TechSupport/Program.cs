@@ -16,7 +16,7 @@ namespace TechSupport
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Create LoginForm and mainform here
-            MainFormTabbed mainForm = new MainFormTabbed();
+            MainForm mainForm = new MainForm();
             LoginForm loginForm = new LoginForm(mainForm);
             mainForm.loginForm = loginForm;
             Application.Run(loginForm);
