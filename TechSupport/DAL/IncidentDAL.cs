@@ -154,5 +154,37 @@ namespace TechSupport.DAL
             }
 
         }
+
+        /// <summary>
+        /// Retrieves all technicians from the database.
+        /// </summary>
+        /// <returns>List of technicians</returns>
+        internal List<Technician> GetTechnicians()
+        {
+            List<Technician> technicians = new List<Technician>();
+            string selectStatement = "SELECT * FROM Technicians;";
+
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            technicians.Add(new Technician
+                            {
+                                TechID = (int)reader["TechID"],
+                                Name = reader["Name"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                Phone = reader["Phone"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+            return technicians;
+        }
     }
 }

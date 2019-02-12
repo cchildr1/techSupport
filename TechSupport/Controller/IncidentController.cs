@@ -57,5 +57,14 @@ namespace TechSupport.Controller
         {
             return this.incidentSource.AddIncident(customerID, productCode, title, description);
         }
+
+        /// <summary>
+        /// Gets the technicians from the DAL
+        /// </summary>
+        /// <returns>list of technicians</returns>
+        public List<Technician> GetTechnicians()
+        {
+            return this.incidentSource.GetTechnicians();
+        }
     }
 }

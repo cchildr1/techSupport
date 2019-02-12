@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tbTextToAdd = new System.Windows.Forms.TextBox();
+            this.tbDescription = new System.Windows.Forms.TextBox();
+            this.tbDateOpened = new System.Windows.Forms.TextBox();
+            this.tbTitle = new System.Windows.Forms.TextBox();
+            this.tbProduct = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,12 +45,7 @@
             this.tbIncidentID = new System.Windows.Forms.TextBox();
             this.btGetIncident = new System.Windows.Forms.Button();
             this.tbCustomer = new System.Windows.Forms.TextBox();
-            this.tbProduct = new System.Windows.Forms.TextBox();
             this.cbTechnician = new System.Windows.Forms.ComboBox();
-            this.tbTitle = new System.Windows.Forms.TextBox();
-            this.tbDateOpened = new System.Windows.Forms.TextBox();
-            this.tbDescription = new System.Windows.Forms.TextBox();
-            this.tbTextToAdd = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btUpdate = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -93,6 +93,62 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(491, 550);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // tbTextToAdd
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.tbTextToAdd, 2);
+            this.tbTextToAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbTextToAdd.Enabled = false;
+            this.tbTextToAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTextToAdd.Location = new System.Drawing.Point(114, 430);
+            this.tbTextToAdd.Multiline = true;
+            this.tbTextToAdd.Name = "tbTextToAdd";
+            this.tbTextToAdd.Size = new System.Drawing.Size(374, 55);
+            this.tbTextToAdd.TabIndex = 16;
+            // 
+            // tbDescription
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.tbDescription, 2);
+            this.tbDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDescription.Location = new System.Drawing.Point(114, 369);
+            this.tbDescription.Multiline = true;
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.ReadOnly = true;
+            this.tbDescription.Size = new System.Drawing.Size(374, 55);
+            this.tbDescription.TabIndex = 15;
+            // 
+            // tbDateOpened
+            // 
+            this.tbDateOpened.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tbDateOpened.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDateOpened.Location = new System.Drawing.Point(114, 308);
+            this.tbDateOpened.Name = "tbDateOpened";
+            this.tbDateOpened.ReadOnly = true;
+            this.tbDateOpened.Size = new System.Drawing.Size(183, 22);
+            this.tbDateOpened.TabIndex = 14;
+            // 
+            // tbTitle
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.tbTitle, 2);
+            this.tbTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTitle.Location = new System.Drawing.Point(114, 247);
+            this.tbTitle.Name = "tbTitle";
+            this.tbTitle.ReadOnly = true;
+            this.tbTitle.Size = new System.Drawing.Size(374, 22);
+            this.tbTitle.TabIndex = 13;
+            // 
+            // tbProduct
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.tbProduct, 2);
+            this.tbProduct.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tbProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbProduct.Location = new System.Drawing.Point(114, 125);
+            this.tbProduct.Name = "tbProduct";
+            this.tbProduct.ReadOnly = true;
+            this.tbProduct.Size = new System.Drawing.Size(374, 22);
+            this.tbProduct.TabIndex = 11;
             // 
             // label1
             // 
@@ -203,18 +259,9 @@
             this.tbCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbCustomer.Location = new System.Drawing.Point(114, 64);
             this.tbCustomer.Name = "tbCustomer";
+            this.tbCustomer.ReadOnly = true;
             this.tbCustomer.Size = new System.Drawing.Size(374, 22);
             this.tbCustomer.TabIndex = 10;
-            // 
-            // tbProduct
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.tbProduct, 2);
-            this.tbProduct.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tbProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbProduct.Location = new System.Drawing.Point(114, 125);
-            this.tbProduct.Name = "tbProduct";
-            this.tbProduct.Size = new System.Drawing.Size(374, 22);
-            this.tbProduct.TabIndex = 11;
             // 
             // cbTechnician
             // 
@@ -227,47 +274,6 @@
             this.cbTechnician.Name = "cbTechnician";
             this.cbTechnician.Size = new System.Drawing.Size(374, 24);
             this.cbTechnician.TabIndex = 12;
-            // 
-            // tbTitle
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.tbTitle, 2);
-            this.tbTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tbTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTitle.Location = new System.Drawing.Point(114, 247);
-            this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(374, 22);
-            this.tbTitle.TabIndex = 13;
-            // 
-            // tbDateOpened
-            // 
-            this.tbDateOpened.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tbDateOpened.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDateOpened.Location = new System.Drawing.Point(114, 308);
-            this.tbDateOpened.Name = "tbDateOpened";
-            this.tbDateOpened.Size = new System.Drawing.Size(183, 22);
-            this.tbDateOpened.TabIndex = 14;
-            // 
-            // tbDescription
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.tbDescription, 2);
-            this.tbDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDescription.Location = new System.Drawing.Point(114, 369);
-            this.tbDescription.Multiline = true;
-            this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(374, 55);
-            this.tbDescription.TabIndex = 15;
-            // 
-            // tbTextToAdd
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.tbTextToAdd, 2);
-            this.tbTextToAdd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbTextToAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTextToAdd.Location = new System.Drawing.Point(114, 430);
-            this.tbTextToAdd.Multiline = true;
-            this.tbTextToAdd.Name = "tbTextToAdd";
-            this.tbTextToAdd.Size = new System.Drawing.Size(374, 55);
-            this.tbTextToAdd.TabIndex = 16;
             // 
             // flowLayoutPanel1
             // 
@@ -287,6 +293,7 @@
             // 
             this.btUpdate.AutoSize = true;
             this.btUpdate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btUpdate.Enabled = false;
             this.btUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btUpdate.Location = new System.Drawing.Point(3, 3);
             this.btUpdate.Name = "btUpdate";
@@ -303,6 +310,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.AutoSize = true;
             this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button1.Enabled = false;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(82, 3);
             this.button1.Name = "button1";
