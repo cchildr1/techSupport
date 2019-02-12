@@ -4,13 +4,13 @@ using TechSupport.Controller;
 
 namespace TechSupport.UserControls
 {
-    public partial class AddIncidentControl : UserControl
+    public partial class AddIncident : UserControl
     {
         private IncidentController controller;
         /// <summary>
         /// Constructor
         /// </summary>
-        public AddIncidentControl()
+        public AddIncident()
         {
             InitializeComponent();
             this.controller = new IncidentController();

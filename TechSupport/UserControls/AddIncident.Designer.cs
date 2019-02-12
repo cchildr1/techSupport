@@ -1,6 +1,6 @@
 ﻿namespace TechSupport.UserControls
 {
-    partial class AddIncidentControl
+    partial class AddIncident
     {
         /// <summary> 
         /// Required designer variable.
@@ -66,7 +66,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(419, 364);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(491, 550);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lbCustomer
@@ -86,7 +86,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.cbCustomer, 2);
             this.cbCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCustomer.FormattingEnabled = true;
-            this.cbCustomer.Location = new System.Drawing.Point(86, 3);
+            this.cbCustomer.Location = new System.Drawing.Point(101, 3);
             this.cbCustomer.Name = "cbCustomer";
             this.cbCustomer.Size = new System.Drawing.Size(330, 21);
             this.cbCustomer.TabIndex = 1;
@@ -109,7 +109,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.cbProduct, 2);
             this.cbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProduct.FormattingEnabled = true;
-            this.cbProduct.Location = new System.Drawing.Point(86, 28);
+            this.cbProduct.Location = new System.Drawing.Point(101, 28);
             this.cbProduct.Name = "cbProduct";
             this.cbProduct.Size = new System.Drawing.Size(330, 21);
             this.cbProduct.TabIndex = 3;
@@ -130,7 +130,7 @@
             // tbTitle
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.tbTitle, 2);
-            this.tbTitle.Location = new System.Drawing.Point(86, 55);
+            this.tbTitle.Location = new System.Drawing.Point(101, 55);
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.Size = new System.Drawing.Size(330, 20);
             this.tbTitle.TabIndex = 6;
@@ -139,7 +139,7 @@
             // tbDescription
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.tbDescription, 2);
-            this.tbDescription.Location = new System.Drawing.Point(86, 82);
+            this.tbDescription.Location = new System.Drawing.Point(101, 82);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
             this.tbDescription.Size = new System.Drawing.Size(330, 214);
@@ -158,7 +158,7 @@
             // 
             // btnAddIncident
             // 
-            this.btnAddIncident.Location = new System.Drawing.Point(86, 302);
+            this.btnAddIncident.Location = new System.Drawing.Point(101, 302);
             this.btnAddIncident.Name = "btnAddIncident";
             this.btnAddIncident.Size = new System.Drawing.Size(75, 23);
             this.btnAddIncident.TabIndex = 8;
@@ -168,7 +168,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(253, 302);
+            this.btnClear.Location = new System.Drawing.Point(297, 302);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 9;
@@ -176,13 +176,13 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // AddIncidentControl
+            // AddIncident
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "AddIncidentControl";
-            this.Size = new System.Drawing.Size(425, 370);
+            this.Name = "AddIncident";
+            this.Size = new System.Drawing.Size(491, 550);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

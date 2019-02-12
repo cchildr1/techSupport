@@ -19,10 +19,6 @@ namespace TechSupport.View
             this.loginForm.Show();
         }
 
-        private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            displayOpenIncidents1.getOpenIncidents();
-        }
 
         private void DisplayOpenIncidents(object sender, EventArgs e)
         {
@@ -34,10 +30,6 @@ namespace TechSupport.View
             Application.Exit();
         }
 
-        private void addIncidentDBControl1_Load(object sender, EventArgs e)
-        {
-            
-        }
         /// <summary>
         /// Sets username label next to logout link
         /// </summary>

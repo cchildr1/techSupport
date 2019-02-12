@@ -50,5 +50,10 @@ namespace TechSupport.UserControls
                 MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
+
+        private void btRefresh_Click(object sender, EventArgs e)
+        {
+            this.getOpenIncidents();
+        }
     }
 }

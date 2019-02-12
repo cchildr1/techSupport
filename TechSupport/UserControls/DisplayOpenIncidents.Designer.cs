@@ -34,20 +34,23 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btRefresh = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvOpenIncidents
             // 
+            this.lvOpenIncidents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvOpenIncidents.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
-            this.lvOpenIncidents.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvOpenIncidents.Location = new System.Drawing.Point(0, 0);
+            this.lvOpenIncidents.Location = new System.Drawing.Point(0, 33);
             this.lvOpenIncidents.Name = "lvOpenIncidents";
-            this.lvOpenIncidents.Size = new System.Drawing.Size(348, 258);
+            this.lvOpenIncidents.Size = new System.Drawing.Size(491, 517);
             this.lvOpenIncidents.TabIndex = 0;
             this.lvOpenIncidents.UseCompatibleStateImageBehavior = false;
             this.lvOpenIncidents.View = System.Windows.Forms.View.Details;
@@ -77,14 +80,27 @@
             this.columnHeader5.Text = "Title";
             this.columnHeader5.Width = 257;
             // 
+            // btRefresh
+            // 
+            this.btRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btRefresh.Location = new System.Drawing.Point(415, 4);
+            this.btRefresh.Name = "btRefresh";
+            this.btRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btRefresh.TabIndex = 1;
+            this.btRefresh.Text = "Refresh";
+            this.btRefresh.UseVisualStyleBackColor = true;
+            this.btRefresh.Click += new System.EventHandler(this.btRefresh_Click);
+            // 
             // DisplayOpenIncidents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.Controls.Add(this.btRefresh);
             this.Controls.Add(this.lvOpenIncidents);
             this.Name = "DisplayOpenIncidents";
-            this.Size = new System.Drawing.Size(348, 258);
+            this.Size = new System.Drawing.Size(494, 553);
             this.ResumeLayout(false);
 
         }
@@ -97,5 +113,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.Button btRefresh;
     }
 }
