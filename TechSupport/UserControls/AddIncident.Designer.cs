@@ -164,7 +164,7 @@
             this.btnAddIncident.TabIndex = 8;
             this.btnAddIncident.Text = "Add Incident";
             this.btnAddIncident.UseVisualStyleBackColor = true;
-            this.btnAddIncident.Click += new System.EventHandler(this.btnAddIncident_Click);
+            this.btnAddIncident.Click += new System.EventHandler(this.BtnAddIncident_Click);
             // 
             // btnClear
             // 
@@ -174,7 +174,7 @@
             this.btnClear.TabIndex = 9;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
             // AddIncident
             // 

@@ -19,7 +19,7 @@ namespace TechSupport.DAL
             List<Incident> incidentList = new List<Incident>();
 
             string selectStatement =
-                "SELECT i.ProductCode, i.DateOpened, c.Name as Customer, t.Name as Technician, i.Title " +
+                "SELECT i.IncidentID, i.CustomerID, i.TechID as TechID, i.ProductCode, i.DateOpened, c.Name as Customer, t.Name as Technician, i.Title, i.Description " +
                 "from Incidents i " +
                 "LEFT JOIN Technicians t on i.TechID = t.TechID " +
                 "LEFT JOIN Customers c on i.CustomerID = c.CustomerID " +
@@ -37,11 +37,14 @@ namespace TechSupport.DAL
                         {
                             Incident incident = new Incident
                             {
+                                IncidentID = (int)reader["IncidentID"],
+                                CustomerID = (int)reader["CustomerID"],
                                 ProductCode = reader["ProductCode"].ToString(),
                                 DateOpened = (DateTime)reader["DateOpened"],
                                 CustomerName = reader["Customer"].ToString(),
                                 TechnicianName = reader["Technician"].ToString(),
-                                Title = reader["Title"].ToString()
+                                Title = reader["Title"].ToString(),
+                                Description = reader["Description"].ToString()
                             };
 
                             incidentList.Add(incident);
@@ -136,6 +139,7 @@ namespace TechSupport.DAL
                 string insertStatement = "INSERT Incidents" +
                     "(CustomerID, ProductCode, DateOpened, Title, Description)" +
                     "VALUES (@CustomerID, @ProductCode, getdate(), @Title, @Description);";
+                connection.Open();
                 using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
                 {
                     insertCommand.Parameters.AddWithValue("@CustomerID", incident.CustomerID);

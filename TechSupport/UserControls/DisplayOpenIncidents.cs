@@ -6,6 +6,9 @@ using TechSupport.Model;
 
 namespace TechSupport.UserControls
 {
+    /// <summary>
+    /// User Control to display the open incidents
+    /// </summary>
     public partial class DisplayOpenIncidents : UserControl
     {
 
@@ -16,8 +19,10 @@ namespace TechSupport.UserControls
             InitializeComponent();
             incidentController = new IncidentController();
         }
-
-        public void getOpenIncidents()
+        /// <summary>
+        /// populates list
+        /// </summary>
+        public void GetOpenIncidents()
         {
             if (lvOpenIncidents.Items.Count != 0)
             {
@@ -51,9 +56,9 @@ namespace TechSupport.UserControls
             }
         }
 
-        private void btRefresh_Click(object sender, EventArgs e)
+        private void BtRefresh_Click(object sender, EventArgs e)
         {
-            this.getOpenIncidents();
+            this.GetOpenIncidents();
         }
     }
 }

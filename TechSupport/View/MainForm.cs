@@ -22,7 +22,7 @@ namespace TechSupport.View
 
         private void DisplayOpenIncidents(object sender, EventArgs e)
         {
-            displayOpenIncidents1.getOpenIncidents();
+            displayOpenIncidents1.GetOpenIncidents();
         }
 
         private void MainFormTabbed_FormClosed(object sender, FormClosedEventArgs e)
