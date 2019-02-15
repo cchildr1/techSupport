@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace TechSupport.Model
 {
+
+    /// <summary>
+    ///  Represents a technician
+    /// </summary>
     public class Technician
     {
         public int TechID { get; set; }

@@ -1,6 +1,9 @@
 ﻿namespace TechSupport.Model
 {
-    class Customer
+    /// <summary>
+    /// Represents customer
+    /// </summary>
+    public class Customer
     {
         public int CustomerID { get; set; }
         public string Name { get; set; }

@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace TechSupport.UserControls
 {
+    /// <summary>
+    /// User control to update incidents
+    /// </summary>
     public partial class UpdateIncident : UserControl
     {
         public UpdateIncident()

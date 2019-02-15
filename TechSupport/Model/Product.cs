@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace TechSupport.Model
 {
-    class Product
+    /// <summary>
+    /// Represents a product
+    /// </summary>
+    public class Product
     {
         public string ProductCode { get; set; }
         public string Name { get; set; }

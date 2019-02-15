@@ -4,6 +4,10 @@ using TechSupport.View;
 
 namespace TechSupport
 {
+
+    /// <summary>
+    /// Driver
+    /// </summary>
     static class Program
     {
         /// <summary>

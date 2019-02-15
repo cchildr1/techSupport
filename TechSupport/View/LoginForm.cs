@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace TechSupport.View
 {
+    /// <summary>
+    /// Login form
+    /// </summary>
     public partial class LoginForm : Form
     {
 

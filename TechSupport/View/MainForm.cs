@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace TechSupport.View
 {
+    /// <summary>
+    /// Main form that holds tabs for user controls
+    /// </summary>
     public partial class MainForm : Form
     {
 
