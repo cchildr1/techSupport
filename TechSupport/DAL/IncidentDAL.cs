@@ -39,8 +39,8 @@ namespace TechSupport.DAL
                             {
                                 ProductCode = reader["ProductCode"].ToString(),
                                 DateOpened = (DateTime)reader["DateOpened"],
-                                Customer = reader["Customer"].ToString(),
-                                Technician = reader["Technician"].ToString(),
+                                CustomerName = reader["Customer"].ToString(),
+                                TechnicianName = reader["Technician"].ToString(),
                                 Title = reader["Title"].ToString()
                             };
 
@@ -127,32 +127,28 @@ namespace TechSupport.DAL
         /// <param name="title">Title as string</param>
         /// <param name="description">Description as string</param>
         /// <returns>returns int result based on whether query executed</returns>
-        internal int AddIncident(int customerID, string productCode, string title, string description)
+        internal int AddIncident(Incident incident)
         {
-            SqlConnection connection = TechSupportDBConnection.GetConnection();
-
-            string insertStatement = "INSERT Incidents" +
-                "(CustomerID, ProductCode, DateOpened, Title, Description)" +
-                "VALUES (@CustomerID, @ProductCode, getdate(), @Title, @Description);";
-            SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@CustomerID", customerID);
-            insertCommand.Parameters.AddWithValue("@ProductCode", productCode);
-            insertCommand.Parameters.AddWithValue("@Title", title);
-            insertCommand.Parameters.AddWithValue("@Description", description);
-
-            try
+           
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
             {
-                connection.Open();
-                int result = insertCommand.ExecuteNonQuery();
-                return result;
-            } catch (SqlException ex)
-            {
-                throw ex;
-            } finally
-            {
-                connection.Close();
-            }
 
+                string insertStatement = "INSERT Incidents" +
+                    "(CustomerID, ProductCode, DateOpened, Title, Description)" +
+                    "VALUES (@CustomerID, @ProductCode, getdate(), @Title, @Description);";
+                using (SqlCommand insertCommand = new SqlCommand(insertStatement, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@CustomerID", incident.CustomerID);
+                    insertCommand.Parameters.AddWithValue("@ProductCode", incident.ProductCode);
+                    insertCommand.Parameters.AddWithValue("@Title", incident.Title);
+                    insertCommand.Parameters.AddWithValue("@Description", incident.Description);
+
+
+                    int result = insertCommand.ExecuteNonQuery();
+                    return result;
+
+                }
+        }
         }
 
         /// <summary>

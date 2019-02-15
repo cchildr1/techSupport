@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using TechSupport.Controller;
+using TechSupport.Model;
 
 namespace TechSupport.UserControls
 {
@@ -26,7 +27,14 @@ namespace TechSupport.UserControls
         {
             if(this.IsValidData())
             {
-                if (controller.AddIncident((int)cbCustomer.SelectedValue, (string)cbProduct.SelectedValue, tbTitle.Text, tbDescription.Text) > 0)
+                Incident incident = new Incident();
+                incident.CustomerID = (int)this.cbCustomer.SelectedValue;
+                incident.CustomerName = this.cbCustomer.SelectedText;
+                incident.Title = this.tbTitle.Text;
+                incident.Description = this.tbDescription.Text;
+                incident.ProductCode = (string)this.cbProduct.SelectedValue;
+                
+                if (controller.AddIncident(incident) > 0)
                 {
                     MessageBox.Show("Added Incident.", "Success!");
                     this.clear();

@@ -37,8 +37,8 @@ namespace TechSupport.UserControls
                         incident = incidentList[i];
                         lvOpenIncidents.Items.Add(incident.ProductCode);
                         lvOpenIncidents.Items[i].SubItems.Add(incident.DateOpened.ToShortDateString());
-                        lvOpenIncidents.Items[i].SubItems.Add(incident.Customer);
-                        lvOpenIncidents.Items[i].SubItems.Add(incident.Technician);
+                        lvOpenIncidents.Items[i].SubItems.Add(incident.CustomerName);
+                        lvOpenIncidents.Items[i].SubItems.Add(incident.TechnicianName);
                         lvOpenIncidents.Items[i].SubItems.Add(incident.Title);
                     }
                 } else

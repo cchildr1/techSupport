@@ -46,16 +46,13 @@ namespace TechSupport.Controller
         }
 
         /// <summary>
-        /// Adds an incident to the database by calling method in DAL
+        /// Calls add incident from DAL that adds the incident to the DB
         /// </summary>
-        /// <param name="customerID">Customer ID #</param>
-        /// <param name="productCode">Product Code</param>
-        /// <param name="title">Title</param>
-        /// <param name="description">Description of Incident</param>
-        /// <returns>int for query result</returns>
-        public int AddIncident(int customerID, string productCode, string title, string description)
+        /// <param name="incident">incident to add</param>
+        /// <returns>int indicating success</returns>
+        public int AddIncident(Incident incident)
         {
-            return this.incidentSource.AddIncident(customerID, productCode, title, description);
+            return this.incidentSource.AddIncident(incident);
         }
 
         /// <summary>
