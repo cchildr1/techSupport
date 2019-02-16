@@ -105,6 +105,7 @@
             this.tbTextToAdd.Name = "tbTextToAdd";
             this.tbTextToAdd.Size = new System.Drawing.Size(374, 55);
             this.tbTextToAdd.TabIndex = 16;
+            this.tbTextToAdd.Tag = "Text To Add";
             // 
             // tbDescription
             // 
@@ -117,6 +118,7 @@
             this.tbDescription.ReadOnly = true;
             this.tbDescription.Size = new System.Drawing.Size(374, 55);
             this.tbDescription.TabIndex = 15;
+            this.tbDescription.Tag = "Description";
             // 
             // tbDateOpened
             // 
@@ -127,6 +129,7 @@
             this.tbDateOpened.ReadOnly = true;
             this.tbDateOpened.Size = new System.Drawing.Size(183, 22);
             this.tbDateOpened.TabIndex = 14;
+            this.tbDateOpened.Tag = "Date Opened";
             // 
             // tbTitle
             // 
@@ -138,6 +141,7 @@
             this.tbTitle.ReadOnly = true;
             this.tbTitle.Size = new System.Drawing.Size(374, 22);
             this.tbTitle.TabIndex = 13;
+            this.tbTitle.Tag = "Title";
             // 
             // tbProduct
             // 
@@ -149,6 +153,7 @@
             this.tbProduct.ReadOnly = true;
             this.tbProduct.Size = new System.Drawing.Size(374, 22);
             this.tbProduct.TabIndex = 11;
+            this.tbProduct.Tag = "Product";
             // 
             // label1
             // 
@@ -238,6 +243,7 @@
             this.tbIncidentID.Name = "tbIncidentID";
             this.tbIncidentID.Size = new System.Drawing.Size(183, 22);
             this.tbIncidentID.TabIndex = 8;
+            this.tbIncidentID.Tag = "Incident ID";
             // 
             // btGetIncident
             // 
@@ -263,6 +269,7 @@
             this.tbCustomer.ReadOnly = true;
             this.tbCustomer.Size = new System.Drawing.Size(374, 22);
             this.tbCustomer.TabIndex = 10;
+            this.tbCustomer.Tag = "Customer";
             // 
             // cbTechnician
             // 
@@ -276,6 +283,7 @@
             this.cbTechnician.Name = "cbTechnician";
             this.cbTechnician.Size = new System.Drawing.Size(374, 24);
             this.cbTechnician.TabIndex = 12;
+            this.cbTechnician.Tag = "Technician";
             // 
             // flowLayoutPanel1
             // 

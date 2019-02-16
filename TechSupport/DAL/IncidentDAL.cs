@@ -212,6 +212,7 @@ namespace TechSupport.DAL
                         Incident incident = new Incident();
                         if(reader.Read())
                         {
+                            incident.IncidentID = (int)reader["IncidentID"];
                             incident.CustomerID = (int)reader["CustomerID"];
                             incident.CustomerName = reader["CustomerName"].ToString();
                             incident.ProductCode = reader["ProductCode"].ToString();
@@ -251,7 +252,7 @@ namespace TechSupport.DAL
                 "CustomerID = @CustomerID, " +
                 "ProductCode = @ProductCode, " +
                 "TechID = @TechID, " +
-                "DateClosed = @DateClosed, " +
+                 "DateClosed = @DateClosed, " +
                 "Title = @Title, " +
                 "Description = @Description " +
                 "WHERE IncidentID = @IncidentID;";
@@ -271,13 +272,13 @@ namespace TechSupport.DAL
                     {
                         updateCommand.Parameters.AddWithValue("@TechID", newIncident.TechnicianID);
                     }
-                    if (newIncident.DateClosed == null)
+                    if (newIncident.DateClosed == DateTime.MinValue)
                     {
                         updateCommand.Parameters.AddWithValue("@DateClosed", DBNull.Value);
                     }
                     else
                     {
-                        updateCommand.Parameters.AddWithValue("@DateClosed", newIncident.DateClosed.ToShortDateString());
+                        updateCommand.Parameters.AddWithValue("@DateClosed", newIncident.DateClosed);
                     }
                     updateCommand.Parameters.AddWithValue("@Title", newIncident.Title);
                     updateCommand.Parameters.AddWithValue("@Description", newIncident.Description);

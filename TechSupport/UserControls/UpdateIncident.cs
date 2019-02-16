@@ -100,6 +100,10 @@ namespace TechSupport.UserControls
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
+            if (oldIncident.TechnicianID != (int)cbTechnician.SelectedValue && tbTextToAdd.Text == "")
+            {
+                tbTextToAdd.Text = "Assigned Technician.";
+            }
             if (Validator.IsPresent(tbTextToAdd))
             {
                 Incident newIncident = new Incident
@@ -113,7 +117,7 @@ namespace TechSupport.UserControls
                     ProductCode = this.oldIncident.ProductCode,
                     Description = this.updateDescription(),
                 };
-
+                
                 if (!(cbTechnician.SelectedIndex < 0))
                 {
                     newIncident.TechnicianID = (int)cbTechnician.SelectedValue;
@@ -134,10 +138,6 @@ namespace TechSupport.UserControls
                 {
                     MessageBox.Show("Something is wrong with the DB.", "Exception thrown");
                 }
-            }
-            else
-            {
-                MessageBox.Show("Text to Add is required");
             }
         }
 
@@ -164,7 +164,7 @@ namespace TechSupport.UserControls
                     MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    return description.Substring(description.Length - 200);
+                    return description.Substring(description.Length - 199);
                 }
             }
             return description;
