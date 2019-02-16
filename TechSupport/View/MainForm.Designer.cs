@@ -33,12 +33,15 @@
             this.displayOpenIncidents1 = new TechSupport.UserControls.DisplayOpenIncidents();
             this.addTab = new System.Windows.Forms.TabPage();
             this.addIncident1 = new TechSupport.UserControls.AddIncident();
+            this.updateTab = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.logoutLink = new System.Windows.Forms.LinkLabel();
+            this.updateIncident1 = new TechSupport.UserControls.UpdateIncident();
             this.mainTabControl.SuspendLayout();
             this.displayOpenIncidentsPage.SuspendLayout();
             this.addTab.SuspendLayout();
+            this.updateTab.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +52,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mainTabControl.Controls.Add(this.displayOpenIncidentsPage);
             this.mainTabControl.Controls.Add(this.addTab);
+            this.mainTabControl.Controls.Add(this.updateTab);
             this.mainTabControl.Location = new System.Drawing.Point(12, 44);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
@@ -96,6 +100,17 @@
             this.addIncident1.Size = new System.Drawing.Size(646, 473);
             this.addIncident1.TabIndex = 0;
             // 
+            // updateTab
+            // 
+            this.updateTab.Controls.Add(this.updateIncident1);
+            this.updateTab.Location = new System.Drawing.Point(4, 22);
+            this.updateTab.Name = "updateTab";
+            this.updateTab.Padding = new System.Windows.Forms.Padding(3);
+            this.updateTab.Size = new System.Drawing.Size(652, 479);
+            this.updateTab.TabIndex = 4;
+            this.updateTab.Text = "Update Incident";
+            this.updateTab.UseVisualStyleBackColor = true;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -128,6 +143,14 @@
             this.logoutLink.Text = "Log Out";
             this.logoutLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLink_LinkClicked);
             // 
+            // updateIncident1
+            // 
+            this.updateIncident1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.updateIncident1.Location = new System.Drawing.Point(3, 3);
+            this.updateIncident1.Name = "updateIncident1";
+            this.updateIncident1.Size = new System.Drawing.Size(646, 473);
+            this.updateIncident1.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -143,6 +166,7 @@
             this.displayOpenIncidentsPage.ResumeLayout(false);
             this.displayOpenIncidentsPage.PerformLayout();
             this.addTab.ResumeLayout(false);
+            this.updateTab.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -159,5 +183,7 @@
         private UserControls.DisplayOpenIncidents displayOpenIncidents1;
         private System.Windows.Forms.TabPage addTab;
         private UserControls.AddIncident addIncident1;
+        private System.Windows.Forms.TabPage updateTab;
+        private UserControls.UpdateIncident updateIncident1;
     }
 }

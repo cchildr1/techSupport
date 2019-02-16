@@ -119,6 +119,7 @@ namespace TechSupport.DAL
                         }
                     }
                 }
+                connection.Close();
             }
             return productList;
         }
@@ -185,6 +186,126 @@ namespace TechSupport.DAL
                 }
             }
             return technicians;
+        }
+        /// <summary>
+        /// Returns a single incident based on ID
+        /// </summary>
+        /// <param name="incidentID">id of incident</param>
+        /// <returns>incident</returns>
+        internal Incident GetIncident(int incidentID)
+        {
+            string selectStatement = "SELECT i.IncidentID, i.CustomerID, c.Name as CustomerName, i.ProductCode, i.Title, i.Description, i.TechID, t.Name as Technician, i.DateOpened, i.DateClosed FROM incidents i LEFT JOIN Customers c on i.CustomerID = c.CustomerID LEFT JOIN Technicians t on t.TechID = i.TechID WHERE IncidentID = @IncidentID;";
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    connection.Open();
+                    selectCommand.Parameters.AddWithValue("@IncidentID", incidentID);
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        Incident incident = new Incident();
+                        if(reader.Read())
+                        {
+                            incident.CustomerID = (int)reader["CustomerID"];
+                            incident.CustomerName = reader["CustomerName"].ToString();
+                            incident.ProductCode = reader["ProductCode"].ToString();
+                            incident.Title = reader["Title"].ToString();
+                            incident.Description = reader["Description"].ToString();
+                            incident.DateOpened = (DateTime)reader["DateOpened"];
+                            if (reader["TechID"] == DBNull.Value)
+                            {
+                                incident.TechnicianID = 0;
+                            } else
+                            {
+                                incident.TechnicianID = (int)reader["TechID"];
+                                incident.TechnicianName = reader["Technician"].ToString();
+                            }
+                            if (!(reader["DateClosed"] == DBNull.Value))
+                            {
+                                incident.DateClosed = (DateTime)reader["DateClosed"];
+                            }
+                            connection.Close();
+                            return incident;
+                            
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+        internal bool UpdateIncident(Incident oldIncident, Incident newIncident)
+        {
+            string updateStatement = "UPDATE Incidents SET" +
+                "CustomerID = @CustomerID" +
+                "ProductCode = @ProductCode" +
+                "TechID = @TechID" +
+                "DateClosed = @DateClosed" +
+                "Title = @Title" +
+                "Description = @Description" +
+                "WHERE IncidentID = @OldIncidentID" +
+                "AND CustomerID = @OldCustomerID" +
+                "AND ProductCode = @OldProductCode" +
+                "AND (TechID = @OldTechID" +
+                "OR TechID IS NULL AND @OldTechID IS NULL)" +
+                "AND DateOpened = @OldDateOpened" +
+                "AND (DateClosed = @OldDateClosed OR DateClosed IS NULL AND @OldDateClosed IS NULL)" +
+                "AND Title = @OldTitle" +
+                "AND Description = @OldDescription;";
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                connection.Open();
+                using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
+                {
+                    updateCommand.Parameters.AddWithValue("@CustomerID", newIncident.CustomerID);
+                    updateCommand.Parameters.AddWithValue("@ProductCode", newIncident.ProductCode);
+                    if (newIncident.TechnicianID == null)
+                    {
+                        updateCommand.Parameters.AddWithValue("@TechID", DBNull.Value);
+                    }
+                    else
+                    {
+                        updateCommand.Parameters.AddWithValue("@TechID", newIncident.TechnicianID);
+                    }
+                    if (newIncident.DateClosed == null)
+                    {
+                        updateCommand.Parameters.AddWithValue("@DateClosed", DBNull.Value);
+                    }
+                    else
+                    {
+                        updateCommand.Parameters.AddWithValue("@DateClosed", newIncident.DateClosed);
+                    }
+                    updateCommand.Parameters.AddWithValue("@Title", newIncident.Title);
+                    updateCommand.Parameters.AddWithValue("@Description", newIncident.Description);
+                    updateCommand.Parameters.AddWithValue("@OldIncidentID", oldIncident.IncidentID);
+                    updateCommand.Parameters.AddWithValue("@OldCustomerID", oldIncident.CustomerID);
+                    updateCommand.Parameters.AddWithValue("@OldProductCode", oldIncident.ProductCode);
+                    updateCommand.Parameters.AddWithValue("@OldTechID", oldIncident.TechnicianID);
+                    updateCommand.Parameters.AddWithValue("@OldDateOpened", oldIncident.DateOpened);
+                    if (oldIncident.DateClosed == null)
+                    {
+                        updateCommand.Parameters.AddWithValue("@OldDateClosed", DBNull.Value);
+                    }
+                    else
+                    {
+                        updateCommand.Parameters.AddWithValue("@OldDateClosed", oldIncident.DateClosed);
+                    }
+                    updateCommand.Parameters.AddWithValue("@OldTitle", oldIncident.Title);
+                    updateCommand.Parameters.AddWithValue("@OldDescription", oldIncident.Description);
+
+
+                    int count = updateCommand.ExecuteNonQuery();
+                    if (count > 0)
+                    {
+                        connection.Close();
+                        return true;
+                    }
+                    else
+                    {
+                        connection.Close();
+                        return false;
+                    }
+                }
+            }
         }
     }
 }

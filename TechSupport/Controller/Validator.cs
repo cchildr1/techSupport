@@ -52,5 +52,23 @@ namespace TechSupport.Controller
             }
             return true;
         }
+
+        /// <summary>
+        /// Verifies if control contains an integer
+        /// </summary>
+        /// <param name="control">control to verify</param>
+        /// <returns>true if contains an integer, false otherwise</returns>
+        public static bool IsInteger(Control control)
+        {
+            if(control.GetType().ToString() == "System.Windows.Forms.TextBox") {
+                TextBox textBox = (TextBox)control;
+                if(int.TryParse(textBox.Text, out int result))
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        }
     }
 }

@@ -63,5 +63,15 @@ namespace TechSupport.Controller
         {
             return this.incidentSource.GetTechnicians();
         }
+
+        /// <summary>
+        /// Gets incident from DB
+        /// </summary>
+        /// <param name="incidentID">ID of incident</param>
+        /// <returns>Incident</returns>
+        public Incident GetIncident(int incidentID)
+        {
+            return this.incidentSource.GetIncident(incidentID);
+        }
     }
 }

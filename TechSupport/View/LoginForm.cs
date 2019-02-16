@@ -26,7 +26,7 @@ namespace TechSupport.View
             if (usernameTextBox.Text.Equals("Jane") && passwordTextBox.Text.Equals("test1234"))
             {
                 messageLabel.Text = "";
-                this.mainFormTabbed.setUserNameText(usernameTextBox.Text);
+                this.mainFormTabbed.SetUserNameText(usernameTextBox.Text);
                 this.Hide();
                 this.mainFormTabbed.Show();
                 this.usernameTextBox.Clear();

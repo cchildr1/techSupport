@@ -37,7 +37,7 @@ namespace TechSupport.View
         /// Sets username label next to logout link
         /// </summary>
         /// <param name="userName">username to set</param>
-        public void setUserNameText(string userName)
+        public void SetUserNameText(string userName)
         {
             usernameLabel.Text = userName;
         }
