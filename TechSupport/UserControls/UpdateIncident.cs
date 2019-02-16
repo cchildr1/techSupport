@@ -31,7 +31,7 @@ namespace TechSupport.UserControls
                 cbTechnician.SelectedIndex = -1;
             } catch (Exception ex)
             {
-                MessageBox.Show("There is an issue with the database.", "Database Error!");
+                MessageBox.Show("Something is wrong with the DB.\n" + ex.Message, "Exception thrown");
             }
         }
 
@@ -95,7 +95,46 @@ namespace TechSupport.UserControls
 
         private void btClose_Click(object sender, EventArgs e)
         {
-
+            if (oldIncident.TechnicianID < 0 && (int)cbTechnician.SelectedValue < 0)
+            {
+                MessageBox.Show("You must have a technician to close a ticket.", "Cannot Close Ticket");
+            } else
+            {
+                if (tbTextToAdd.Text == "")
+                {
+                    tbTextToAdd.Text = "Ticked Closed.";
+                }
+                if (Validator.IsPresent(tbTextToAdd))
+                {
+                    Incident newIncident = new Incident
+                    {
+                        IncidentID = this.oldIncident.IncidentID,
+                        CustomerID = this.oldIncident.CustomerID,
+                        CustomerName = this.oldIncident.CustomerName,
+                        DateOpened = this.oldIncident.DateOpened,
+                        DateClosed = this.oldIncident.DateClosed,
+                        Title = this.oldIncident.Title,
+                        ProductCode = this.oldIncident.ProductCode,
+                        Description = this.UpdateDescription(),
+                        TechnicianID = (int)cbTechnician.SelectedValue
+                    };
+                    try
+                    {
+                        if (controller.UpdateIncident(newIncident))
+                        {
+                            MessageBox.Show("Record Updated", "Incident Updated");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Record Update Failed.", "Incident not updated");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Something is wrong with the DB.\n" + ex.Message, "Exception thrown");
+                    }
+                }
+            }
         }
 
         private void btUpdate_Click(object sender, EventArgs e)
@@ -115,7 +154,7 @@ namespace TechSupport.UserControls
                     DateClosed = this.oldIncident.DateClosed,
                     Title = this.oldIncident.Title,
                     ProductCode = this.oldIncident.ProductCode,
-                    Description = this.updateDescription(),
+                    Description = this.UpdateDescription(),
                 };
                 
                 if (!(cbTechnician.SelectedIndex < 0))
@@ -136,26 +175,26 @@ namespace TechSupport.UserControls
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Something is wrong with the DB.", "Exception thrown");
+                    MessageBox.Show("Something is wrong with the DB.\n" + ex.Message, "Exception thrown");
                 }
             }
         }
 
-        private string updateDescription()
+        private string UpdateDescription()
         {
             string description = tbDescription.Text;
             if (tbTextToAdd.Text.Equals(""))
             {
-                description = checkDescriptionFor200Chars(description);
+                description = CheckDescriptionFor200Chars(description);
             } else
             {
                 description += "\n<" + DateTime.Now.ToShortDateString() + "> " + tbTextToAdd.Text;
-                description = checkDescriptionFor200Chars(description);
+                description = CheckDescriptionFor200Chars(description);
             }
             return description;
         }
 
-        private string checkDescriptionFor200Chars(string description)
+        private string CheckDescriptionFor200Chars(string description)
         {
             if (description.Length > 200)
             {

@@ -26,7 +26,7 @@ namespace TechSupport.UserControls
             } 
             catch (Exception ex)
             {
-                MessageBox.Show("There is an issue with the Database.");
+                MessageBox.Show("Something is wrong with the DB.\n" + ex.Message, "Exception thrown");
             }
             try
             {
@@ -36,7 +36,7 @@ namespace TechSupport.UserControls
             } 
             catch (Exception ex)
             {
-                MessageBox.Show("There is an issue with the database.");
+                MessageBox.Show("Something is wrong with the DB.\n" + ex.Message, "Exception thrown");
             }
         }
 
@@ -62,7 +62,7 @@ namespace TechSupport.UserControls
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("There is an issue with the database. Incident not added.");
+                    MessageBox.Show("Something is wrong with the DB.\n" + ex.Message, "Exception thrown");
                 }
             }
         }
