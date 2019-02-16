@@ -269,6 +269,7 @@
             this.cbTechnician.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.cbTechnician, 2);
+            this.cbTechnician.Enabled = false;
             this.cbTechnician.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTechnician.FormattingEnabled = true;
             this.cbTechnician.Location = new System.Drawing.Point(114, 186);
@@ -303,6 +304,7 @@
             this.btUpdate.TabIndex = 10;
             this.btUpdate.Text = "Update";
             this.btUpdate.UseVisualStyleBackColor = true;
+            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
             // 
             // btClose
             // 
@@ -319,7 +321,7 @@
             this.btClose.TabIndex = 11;
             this.btClose.Text = "Close Incident";
             this.btClose.UseVisualStyleBackColor = true;
-            this.btClose.Click += new System.EventHandler(this.BtGetIncident_Click);
+            this.btClose.Click += new System.EventHandler(this.btClose_Click);
             // 
             // btClear
             // 

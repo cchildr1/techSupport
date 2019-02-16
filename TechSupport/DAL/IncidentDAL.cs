@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 using TechSupport.Model;
 
 namespace TechSupport.DAL
@@ -194,7 +196,11 @@ namespace TechSupport.DAL
         /// <returns>incident</returns>
         internal Incident GetIncident(int incidentID)
         {
-            string selectStatement = "SELECT i.IncidentID, i.CustomerID, c.Name as CustomerName, i.ProductCode, i.Title, i.Description, i.TechID, t.Name as Technician, i.DateOpened, i.DateClosed FROM incidents i LEFT JOIN Customers c on i.CustomerID = c.CustomerID LEFT JOIN Technicians t on t.TechID = i.TechID WHERE IncidentID = @IncidentID;";
+            string selectStatement = "SELECT i.IncidentID, i.CustomerID, c.Name as CustomerName, i.ProductCode, i.Title, i.Description, i.TechID, t.Name as Technician, i.DateOpened, i.DateClosed " +
+                "FROM incidents i " +
+                "LEFT JOIN Customers c on i.CustomerID = c.CustomerID " +
+                "LEFT JOIN Technicians t on t.TechID = i.TechID " +
+                "WHERE IncidentID = @IncidentID;";
             using (SqlConnection connection = TechSupportDBConnection.GetConnection())
             {
                 using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
@@ -214,7 +220,7 @@ namespace TechSupport.DAL
                             incident.DateOpened = (DateTime)reader["DateOpened"];
                             if (reader["TechID"] == DBNull.Value)
                             {
-                                incident.TechnicianID = 0;
+                                incident.TechnicianID = -1;
                             } else
                             {
                                 incident.TechnicianID = (int)reader["TechID"];
@@ -233,32 +239,31 @@ namespace TechSupport.DAL
             }
             return null;
         }
-        internal bool UpdateIncident(Incident oldIncident, Incident newIncident)
+        /// <summary>
+        /// Adds incident to DB
+        /// </summary>
+        /// <param name="oldIncident">previous incident to match</param>
+        /// <param name="newIncident">incident to add to db</param>
+        /// <returns>true if successful, false otherwise</returns>
+        internal bool UpdateIncident(Incident newIncident)
         {
-            string updateStatement = "UPDATE Incidents SET" +
-                "CustomerID = @CustomerID" +
-                "ProductCode = @ProductCode" +
-                "TechID = @TechID" +
-                "DateClosed = @DateClosed" +
-                "Title = @Title" +
-                "Description = @Description" +
-                "WHERE IncidentID = @OldIncidentID" +
-                "AND CustomerID = @OldCustomerID" +
-                "AND ProductCode = @OldProductCode" +
-                "AND (TechID = @OldTechID" +
-                "OR TechID IS NULL AND @OldTechID IS NULL)" +
-                "AND DateOpened = @OldDateOpened" +
-                "AND (DateClosed = @OldDateClosed OR DateClosed IS NULL AND @OldDateClosed IS NULL)" +
-                "AND Title = @OldTitle" +
-                "AND Description = @OldDescription;";
+            string updateStatement = "UPDATE Incidents SET " +
+                "CustomerID = @CustomerID, " +
+                "ProductCode = @ProductCode, " +
+                "TechID = @TechID, " +
+                "DateClosed = @DateClosed, " +
+                "Title = @Title, " +
+                "Description = @Description " +
+                "WHERE IncidentID = @IncidentID;";
             using (SqlConnection connection = TechSupportDBConnection.GetConnection())
             {
                 connection.Open();
                 using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
                 {
+                    updateCommand.Parameters.AddWithValue("@IncidentID", newIncident.IncidentID);
                     updateCommand.Parameters.AddWithValue("@CustomerID", newIncident.CustomerID);
                     updateCommand.Parameters.AddWithValue("@ProductCode", newIncident.ProductCode);
-                    if (newIncident.TechnicianID == null)
+                    if (newIncident.TechnicianID == -1)
                     {
                         updateCommand.Parameters.AddWithValue("@TechID", DBNull.Value);
                     }
@@ -272,27 +277,17 @@ namespace TechSupport.DAL
                     }
                     else
                     {
-                        updateCommand.Parameters.AddWithValue("@DateClosed", newIncident.DateClosed);
+                        updateCommand.Parameters.AddWithValue("@DateClosed", newIncident.DateClosed.ToShortDateString());
                     }
                     updateCommand.Parameters.AddWithValue("@Title", newIncident.Title);
                     updateCommand.Parameters.AddWithValue("@Description", newIncident.Description);
-                    updateCommand.Parameters.AddWithValue("@OldIncidentID", oldIncident.IncidentID);
-                    updateCommand.Parameters.AddWithValue("@OldCustomerID", oldIncident.CustomerID);
-                    updateCommand.Parameters.AddWithValue("@OldProductCode", oldIncident.ProductCode);
-                    updateCommand.Parameters.AddWithValue("@OldTechID", oldIncident.TechnicianID);
-                    updateCommand.Parameters.AddWithValue("@OldDateOpened", oldIncident.DateOpened);
-                    if (oldIncident.DateClosed == null)
-                    {
-                        updateCommand.Parameters.AddWithValue("@OldDateClosed", DBNull.Value);
-                    }
-                    else
-                    {
-                        updateCommand.Parameters.AddWithValue("@OldDateClosed", oldIncident.DateClosed);
-                    }
-                    updateCommand.Parameters.AddWithValue("@OldTitle", oldIncident.Title);
-                    updateCommand.Parameters.AddWithValue("@OldDescription", oldIncident.Description);
 
-
+                    string query = updateCommand.CommandText;
+                    foreach (SqlParameter p in updateCommand.Parameters)
+                    {
+                        query = query.Replace(p.ParameterName, p.Value.ToString());
+                    }
+                    MessageBox.Show(query);
                     int count = updateCommand.ExecuteNonQuery();
                     if (count > 0)
                     {

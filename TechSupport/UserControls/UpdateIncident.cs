@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using TechSupport.Controller;
 using TechSupport.Model;
@@ -10,7 +11,7 @@ namespace TechSupport.UserControls
     /// </summary>
     public partial class UpdateIncident : UserControl
     {
-
+        private Incident oldIncident;
         private IncidentController controller;
         public UpdateIncident()
         {
@@ -18,7 +19,13 @@ namespace TechSupport.UserControls
             this.controller = new IncidentController();
             try
             {
-                cbTechnician.DataSource = controller.GetTechnicians();
+                List<Technician> technicians = this.controller.GetTechnicians();
+                technicians.Insert(0, new Technician
+                {
+                    TechID = -1,
+                    Name = "-- Unassigned --"
+                });
+                cbTechnician.DataSource = technicians;
                 cbTechnician.DisplayMember = "Name";
                 cbTechnician.ValueMember = "TechID";
                 cbTechnician.SelectedIndex = -1;
@@ -48,9 +55,20 @@ namespace TechSupport.UserControls
                 tbDescription.Text = incident.Description;
                 tbProduct.Text = incident.ProductCode;
                 tbTitle.Text = incident.Title;
+                if (incident.TechnicianID < 0)
+                {
+                    cbTechnician.SelectedIndex = 0;
+                }
+                else
+                {
+                    cbTechnician.SelectedValue = incident.TechnicianID;
+                }
 
+                this.oldIncident = incident;
                 btUpdate.Enabled = true;
                 btClose.Enabled = true;
+                tbTextToAdd.Enabled = true;
+                cbTechnician.Enabled = true;
             }
         }
 
@@ -62,14 +80,94 @@ namespace TechSupport.UserControls
             tbDescription.Clear();
             tbProduct.Clear();
             tbTitle.Clear();
+            tbTextToAdd.Clear();
 
             btUpdate.Enabled = false;
             btClose.Enabled = false;
+            tbTextToAdd.Enabled = false;
+            cbTechnician.Enabled = false;
         }
 
         private void btClear_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        private void btClose_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btUpdate_Click(object sender, EventArgs e)
+        {
+            if (Validator.IsPresent(tbTextToAdd))
+            {
+                Incident newIncident = new Incident
+                {
+                    IncidentID = this.oldIncident.IncidentID,
+                    CustomerID = this.oldIncident.CustomerID,
+                    CustomerName = this.oldIncident.CustomerName,
+                    DateOpened = this.oldIncident.DateOpened,
+                    DateClosed = this.oldIncident.DateClosed,
+                    Title = this.oldIncident.Title,
+                    ProductCode = this.oldIncident.ProductCode,
+                    Description = this.updateDescription(),
+                };
+
+                if (!(cbTechnician.SelectedIndex < 0))
+                {
+                    newIncident.TechnicianID = (int)cbTechnician.SelectedValue;
+                }
+
+                try
+                {
+                    if (controller.UpdateIncident(newIncident))
+                    {
+                        MessageBox.Show("Record Updated", "Incident Updated");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Record Update Failed.", "Incident not updated");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Something is wrong with the DB.", "Exception thrown");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Text to Add is required");
+            }
+        }
+
+        private string updateDescription()
+        {
+            string description = tbDescription.Text;
+            if (tbTextToAdd.Text.Equals(""))
+            {
+                description = checkDescriptionFor200Chars(description);
+            } else
+            {
+                description += "\n<" + DateTime.Now.ToShortDateString() + "> " + tbTextToAdd.Text;
+                description = checkDescriptionFor200Chars(description);
+            }
+            return description;
+        }
+
+        private string checkDescriptionFor200Chars(string description)
+        {
+            if (description.Length > 200)
+            {
+                var result = MessageBox.Show("The description and additional text is over 200 characters.\nTruncate the description?",
+                    "Description is too long", 
+                    MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    return description.Substring(description.Length - 200);
+                }
+            }
+            return description;
         }
     }
 }

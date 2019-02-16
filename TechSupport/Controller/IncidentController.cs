@@ -73,5 +73,15 @@ namespace TechSupport.Controller
         {
             return this.incidentSource.GetIncident(incidentID);
         }
+
+        /// <summary>
+        /// Calls db method to update incident
+        /// </summary>
+        /// <param name="newIncident">new information</param>
+        /// <returns>true if successful, false otherwise</returns>
+        public bool UpdateIncident(Incident newIncident)
+        {
+            return this.incidentSource.UpdateIncident(newIncident);
+        }
     }
 }
