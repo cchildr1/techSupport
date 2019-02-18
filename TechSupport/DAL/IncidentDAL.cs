@@ -246,24 +246,37 @@ namespace TechSupport.DAL
         /// <param name="oldIncident">previous incident to match</param>
         /// <param name="newIncident">incident to add to db</param>
         /// <returns>true if successful, false otherwise</returns>
-        internal bool UpdateIncident(Incident newIncident)
+        internal bool UpdateIncident(Incident newIncident, Incident oldIncident)
         {
             string updateStatement = "UPDATE Incidents SET " +
-                "CustomerID = @CustomerID, " +
-                "ProductCode = @ProductCode, " +
-                "TechID = @TechID, " +
-                 "DateClosed = @DateClosed, " +
-                "Title = @Title, " +
-                "Description = @Description " +
-                "WHERE IncidentID = @IncidentID;";
+                        "CustomerID = @CustomerID, " +
+                        "ProductCode = @ProductCode, " +
+                        "TechID = @TechID, " +
+                        "DateClosed = @DateClosed, " +
+                        "Title = @Title, " +
+                        "Description = @Description " +
+                        "WHERE IncidentID = @OldIncidentID " +
+                        "AND CustomerID = @OldCustomerID " +
+                        "AND ProductCode = @OldProductCode " +
+                        "AND (TechID = @OldTechID " +
+                        "OR TechID IS NULL AND @OldTechID IS NULL) " +
+                        "AND DateOpened = @OldDateOpened " +
+                        "AND (DateClosed = @OldDateClosed OR DateClosed IS NULL AND @OldDateClosed IS NULL) " +
+                        "AND Title = @OldTitle " +
+                        "AND Description = @OldDescription;";
             using (SqlConnection connection = TechSupportDBConnection.GetConnection())
             {
                 connection.Open();
                 using (SqlCommand updateCommand = new SqlCommand(updateStatement, connection))
                 {
                     updateCommand.Parameters.AddWithValue("@IncidentID", newIncident.IncidentID);
+                    updateCommand.Parameters.AddWithValue("@OldIncidentID", oldIncident.IncidentID);
+
                     updateCommand.Parameters.AddWithValue("@CustomerID", newIncident.CustomerID);
+                    updateCommand.Parameters.AddWithValue("@OldCustomerID", oldIncident.CustomerID);
+
                     updateCommand.Parameters.AddWithValue("@ProductCode", newIncident.ProductCode);
+                    updateCommand.Parameters.AddWithValue("@OldProductCode", oldIncident.ProductCode);
                     if (newIncident.TechnicianID == -1)
                     {
                         updateCommand.Parameters.AddWithValue("@TechID", DBNull.Value);
@@ -271,6 +284,14 @@ namespace TechSupport.DAL
                     else
                     {
                         updateCommand.Parameters.AddWithValue("@TechID", newIncident.TechnicianID);
+                    }
+                    if (oldIncident.TechnicianID == -1)
+                    {
+                        updateCommand.Parameters.AddWithValue("@OldTechID", DBNull.Value);
+                    }
+                    else
+                    {
+                        updateCommand.Parameters.AddWithValue("@OldTechID", oldIncident.TechnicianID);
                     }
                     if (newIncident.DateClosed == DateTime.MinValue)
                     {
@@ -280,8 +301,20 @@ namespace TechSupport.DAL
                     {
                         updateCommand.Parameters.AddWithValue("@DateClosed", newIncident.DateClosed);
                     }
+                    if (oldIncident.DateClosed == DateTime.MinValue)
+                    {
+                        updateCommand.Parameters.AddWithValue("@OldDateClosed", DBNull.Value);
+                    }
+                    else
+                    {
+                        updateCommand.Parameters.AddWithValue("@OldDateClosed", oldIncident.DateClosed);
+                    }
                     updateCommand.Parameters.AddWithValue("@Title", newIncident.Title);
+                    updateCommand.Parameters.AddWithValue("@OldTitle", oldIncident.Title);
+
                     updateCommand.Parameters.AddWithValue("@Description", newIncident.Description);
+                    updateCommand.Parameters.AddWithValue("@OldDescription", oldIncident.Description);
+                    updateCommand.Parameters.AddWithValue("@OldDateOpened", oldIncident.DateOpened);
                     // shows message box of query before command executes
                     //string query = updateCommand.CommandText;
                     //foreach (SqlParameter p in updateCommand.Parameters)
@@ -295,5 +328,6 @@ namespace TechSupport.DAL
                 }
             }
         }
+
     }
 }

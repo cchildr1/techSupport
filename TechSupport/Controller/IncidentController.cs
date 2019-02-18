@@ -78,10 +78,11 @@ namespace TechSupport.Controller
         /// Calls db method to update incident
         /// </summary>
         /// <param name="newIncident">new information</param>
+        /// <param name="oldIncident">old information</param>
         /// <returns>true if successful, false otherwise</returns>
-        public bool UpdateIncident(Incident newIncident)
+        public bool UpdateIncident(Incident newIncident, Incident oldIncident)
         {
-            return this.incidentSource.UpdateIncident(newIncident);
+            return this.incidentSource.UpdateIncident(newIncident, oldIncident);
         }
     }
 }

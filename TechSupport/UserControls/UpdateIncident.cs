@@ -68,7 +68,7 @@ namespace TechSupport.UserControls
                 }
 
                 this.oldIncident = incident;
-                if (incident.DateClosed == DateTime.MinValue)
+                if (incident.DateClosed != DateTime.MinValue)
                 {
                     this.UnlockControls();
                 }
@@ -125,7 +125,7 @@ namespace TechSupport.UserControls
                             "Are you sure?", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            if (controller.UpdateIncident(newIncident))
+                            if (controller.UpdateIncident(newIncident, this.oldIncident))
                             {
                                 MessageBox.Show("Record Updated", "Incident Updated");
                             }
@@ -172,7 +172,7 @@ namespace TechSupport.UserControls
 
                 try
                 {
-                    if (controller.UpdateIncident(newIncident))
+                    if (controller.UpdateIncident(newIncident, this.oldIncident))
                     {
                         MessageBox.Show("Record Updated", "Incident Updated");
                     }
