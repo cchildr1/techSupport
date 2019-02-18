@@ -128,6 +128,8 @@ namespace TechSupport.UserControls
                             if (controller.UpdateIncident(newIncident, this.oldIncident))
                             {
                                 MessageBox.Show("Record Updated", "Incident Updated");
+                                tbDescription.Text = newIncident.Description;
+                                tbTextToAdd.Clear();
                             }
                             else
                             {
@@ -175,6 +177,8 @@ namespace TechSupport.UserControls
                     if (controller.UpdateIncident(newIncident, this.oldIncident))
                     {
                         MessageBox.Show("Record Updated", "Incident Updated");
+                        tbDescription.Text = newIncident.Description;
+                        tbTextToAdd.Clear();
                     }
                     else
                     {
