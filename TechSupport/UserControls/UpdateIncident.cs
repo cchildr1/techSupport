@@ -68,7 +68,7 @@ namespace TechSupport.UserControls
                 }
 
                 this.oldIncident = incident;
-                if (incident.DateClosed != DateTime.MinValue)
+                if (incident.DateClosed == DateTime.MinValue)
                 {
                     this.UnlockControls();
                 }
@@ -113,7 +113,7 @@ namespace TechSupport.UserControls
                         CustomerID = this.oldIncident.CustomerID,
                         CustomerName = this.oldIncident.CustomerName,
                         DateOpened = this.oldIncident.DateOpened,
-                        DateClosed = this.oldIncident.DateClosed,
+                        DateClosed = DateTime.Now,
                         Title = this.oldIncident.Title,
                         ProductCode = this.oldIncident.ProductCode,
                         Description = this.UpdateDescription(),
