@@ -282,24 +282,16 @@ namespace TechSupport.DAL
                     }
                     updateCommand.Parameters.AddWithValue("@Title", newIncident.Title);
                     updateCommand.Parameters.AddWithValue("@Description", newIncident.Description);
-
-                    string query = updateCommand.CommandText;
-                    foreach (SqlParameter p in updateCommand.Parameters)
-                    {
-                        query = query.Replace(p.ParameterName, p.Value.ToString());
-                    }
-                    MessageBox.Show(query);
+                    // shows message box of query before command executes
+                    //string query = updateCommand.CommandText;
+                    //foreach (SqlParameter p in updateCommand.Parameters)
+                    //{
+                    //    query = query.Replace(p.ParameterName, p.Value.ToString());
+                    //}
+                    //MessageBox.Show(query);
                     int count = updateCommand.ExecuteNonQuery();
-                    if (count > 0)
-                    {
-                        connection.Close();
-                        return true;
-                    }
-                    else
-                    {
-                        connection.Close();
-                        return false;
-                    }
+                    connection.Close();
+                    return count > 0;
                 }
             }
         }

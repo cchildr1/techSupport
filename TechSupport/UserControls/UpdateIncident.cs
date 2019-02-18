@@ -6,6 +6,9 @@ using TechSupport.Model;
 
 namespace TechSupport.UserControls
 {
+
+    // TODO ensure record has not changed before the update
+
     /// <summary>
     /// User control to update incidents
     /// </summary>
@@ -65,10 +68,11 @@ namespace TechSupport.UserControls
                 }
 
                 this.oldIncident = incident;
-                btUpdate.Enabled = true;
-                btClose.Enabled = true;
-                tbTextToAdd.Enabled = true;
-                cbTechnician.Enabled = true;
+                if (incident.DateClosed == DateTime.MinValue)
+                {
+                    this.UnlockControls();
+                }
+                
             }
         }
 
@@ -82,10 +86,7 @@ namespace TechSupport.UserControls
             tbTitle.Clear();
             tbTextToAdd.Clear();
 
-            btUpdate.Enabled = false;
-            btClose.Enabled = false;
-            tbTextToAdd.Enabled = false;
-            cbTechnician.Enabled = false;
+            this.LockControls();
         }
 
         private void btClear_Click(object sender, EventArgs e)
@@ -120,19 +121,26 @@ namespace TechSupport.UserControls
                     };
                     try
                     {
-                        if (controller.UpdateIncident(newIncident))
+                        var result = MessageBox.Show("Are you sure you want to close this ticket?\nYou cannot edit it once closed",
+                            "Are you sure?", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
                         {
-                            MessageBox.Show("Record Updated", "Incident Updated");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Record Update Failed.", "Incident not updated");
+                            if (controller.UpdateIncident(newIncident))
+                            {
+                                MessageBox.Show("Record Updated", "Incident Updated");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Record Update Failed.", "Incident not updated");
+                            }
+                            this.LockControls();
                         }
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Something is wrong with the DB.\n" + ex.Message, "Exception thrown");
                     }
+
                 }
             }
         }
@@ -207,6 +215,22 @@ namespace TechSupport.UserControls
                 }
             }
             return description;
+        }
+
+        private void UnlockControls()
+        {
+            btUpdate.Enabled = true;
+            btClose.Enabled = true;
+            tbTextToAdd.Enabled = true;
+            cbTechnician.Enabled = true;
+        }
+
+        private void LockControls()
+        {
+            btUpdate.Enabled = false;
+            btClose.Enabled = false;
+            tbTextToAdd.Enabled = false;
+            cbTechnician.Enabled = false;
         }
     }
 }
