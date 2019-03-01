@@ -316,12 +316,12 @@ namespace TechSupport.DAL
                     updateCommand.Parameters.AddWithValue("@OldDescription", oldIncident.Description);
                     updateCommand.Parameters.AddWithValue("@OldDateOpened", oldIncident.DateOpened);
                     // shows message box of query before command executes
-                    string query = updateCommand.CommandText;
-                    foreach (SqlParameter p in updateCommand.Parameters)
-                    {
-                        query = query.Replace(p.ParameterName, p.Value.ToString());
-                    }
-                    MessageBox.Show(query);
+                    //string query = updateCommand.CommandText;
+                    //foreach (SqlParameter p in updateCommand.Parameters)
+                    //{
+                    //    query = query.Replace(p.ParameterName, p.Value.ToString());
+                    //}
+                    //MessageBox.Show(query);
                     int count = updateCommand.ExecuteNonQuery();
                     connection.Close();
                     return count > 0;

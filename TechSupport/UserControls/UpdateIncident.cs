@@ -48,11 +48,13 @@ namespace TechSupport.UserControls
             Incident incident = controller.GetIncident(int.Parse(tbIncidentID.Text));
             if (incident == null)
             {
+                this.Clear();
                 MessageBox.Show("Record not found.", "No Record");
             }
             else
             {
-
+                this.Clear();
+                tbIncidentID.Text = incident.IncidentID.ToString();
                 tbCustomer.Text = incident.CustomerName;
                 tbDateOpened.Text = incident.DateOpened.ToShortDateString();
                 tbDescription.Text = incident.Description;
@@ -96,7 +98,7 @@ namespace TechSupport.UserControls
 
         private void btClose_Click(object sender, EventArgs e)
         {
-            if (oldIncident.TechnicianID < 0 && (int)cbTechnician.SelectedValue < 0)
+            if ((int)cbTechnician.SelectedValue < 0)
             {
                 MessageBox.Show("You must have a technician to close a ticket.", "Cannot Close Ticket");
             } else
