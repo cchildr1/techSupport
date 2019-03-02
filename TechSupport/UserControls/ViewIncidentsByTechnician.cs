@@ -46,8 +46,7 @@ namespace TechSupport.UserControls
                 Technician technician = technicians[technicianIndex];
                 emailTextBox.Text = technician.Email;
                 phoneTextBox.Text = technician.Phone;
-                populateIncidentGridView(technician.TechID);
-                incidentDataGridView.DataSource = this.controller.getOpenIncidentsByTechnician(technicianID);
+                incidentDataGridView.DataSource = this.controller.getOpenIncidentsByTechnician(technician.TechID);
 
             } 
             catch (Exception ex)
