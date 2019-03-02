@@ -34,10 +34,11 @@
             this.addTab = new System.Windows.Forms.TabPage();
             this.addIncident1 = new TechSupport.UserControls.AddIncident();
             this.updateTab = new System.Windows.Forms.TabPage();
+            this.updateIncident1 = new TechSupport.UserControls.UpdateIncident();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.logoutLink = new System.Windows.Forms.LinkLabel();
-            this.updateIncident1 = new TechSupport.UserControls.UpdateIncident();
+            this.IncidentsByTechnician = new System.Windows.Forms.TabPage();
             this.mainTabControl.SuspendLayout();
             this.displayOpenIncidentsPage.SuspendLayout();
             this.addTab.SuspendLayout();
@@ -53,6 +54,7 @@
             this.mainTabControl.Controls.Add(this.displayOpenIncidentsPage);
             this.mainTabControl.Controls.Add(this.addTab);
             this.mainTabControl.Controls.Add(this.updateTab);
+            this.mainTabControl.Controls.Add(this.IncidentsByTechnician);
             this.mainTabControl.Location = new System.Drawing.Point(12, 44);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedIndex = 0;
@@ -111,6 +113,14 @@
             this.updateTab.Text = "Update Incident";
             this.updateTab.UseVisualStyleBackColor = true;
             // 
+            // updateIncident1
+            // 
+            this.updateIncident1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.updateIncident1.Location = new System.Drawing.Point(3, 3);
+            this.updateIncident1.Name = "updateIncident1";
+            this.updateIncident1.Size = new System.Drawing.Size(646, 473);
+            this.updateIncident1.TabIndex = 0;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -143,13 +153,15 @@
             this.logoutLink.Text = "Log Out";
             this.logoutLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLink_LinkClicked);
             // 
-            // updateIncident1
+            // IncidentsByTechnician
             // 
-            this.updateIncident1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.updateIncident1.Location = new System.Drawing.Point(3, 3);
-            this.updateIncident1.Name = "updateIncident1";
-            this.updateIncident1.Size = new System.Drawing.Size(646, 473);
-            this.updateIncident1.TabIndex = 0;
+            this.IncidentsByTechnician.Location = new System.Drawing.Point(4, 22);
+            this.IncidentsByTechnician.Name = "IncidentsByTechnician";
+            this.IncidentsByTechnician.Padding = new System.Windows.Forms.Padding(3);
+            this.IncidentsByTechnician.Size = new System.Drawing.Size(652, 479);
+            this.IncidentsByTechnician.TabIndex = 5;
+            this.IncidentsByTechnician.Text = "View Incidents By Technician";
+            this.IncidentsByTechnician.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -185,5 +197,6 @@
         private UserControls.AddIncident addIncident1;
         private System.Windows.Forms.TabPage updateTab;
         private UserControls.UpdateIncident updateIncident1;
+        private System.Windows.Forms.TabPage IncidentsByTechnician;
     }
 }

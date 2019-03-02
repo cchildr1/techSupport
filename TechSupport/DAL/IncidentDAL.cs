@@ -190,6 +190,18 @@ namespace TechSupport.DAL
             return technicians;
         }
         /// <summary>
+        /// Returns a list of Technicians who have open incidents
+        /// </summary>
+        /// <returns>list of technicians</returns>
+        internal List<Technician> GetTechniciansWithOpenIncidents()
+        {
+            List<Technician> technicians = new List<Technician>();
+
+
+            return technicians;
+            
+        }
+        /// <summary>
         /// Returns a single incident based on ID
         /// </summary>
         /// <param name="incidentID">id of incident</param>
