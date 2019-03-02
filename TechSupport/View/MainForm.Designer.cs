@@ -35,14 +35,16 @@
             this.addIncident1 = new TechSupport.UserControls.AddIncident();
             this.updateTab = new System.Windows.Forms.TabPage();
             this.updateIncident1 = new TechSupport.UserControls.UpdateIncident();
+            this.IncidentsByTechnician = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.logoutLink = new System.Windows.Forms.LinkLabel();
-            this.IncidentsByTechnician = new System.Windows.Forms.TabPage();
+            this.viewIncidentsByTechnician1 = new TechSupport.UserControls.ViewIncidentsByTechnician();
             this.mainTabControl.SuspendLayout();
             this.displayOpenIncidentsPage.SuspendLayout();
             this.addTab.SuspendLayout();
             this.updateTab.SuspendLayout();
+            this.IncidentsByTechnician.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -121,6 +123,17 @@
             this.updateIncident1.Size = new System.Drawing.Size(646, 473);
             this.updateIncident1.TabIndex = 0;
             // 
+            // IncidentsByTechnician
+            // 
+            this.IncidentsByTechnician.Controls.Add(this.viewIncidentsByTechnician1);
+            this.IncidentsByTechnician.Location = new System.Drawing.Point(4, 22);
+            this.IncidentsByTechnician.Name = "IncidentsByTechnician";
+            this.IncidentsByTechnician.Padding = new System.Windows.Forms.Padding(3);
+            this.IncidentsByTechnician.Size = new System.Drawing.Size(652, 479);
+            this.IncidentsByTechnician.TabIndex = 5;
+            this.IncidentsByTechnician.Text = "View Incidents By Technician";
+            this.IncidentsByTechnician.UseVisualStyleBackColor = true;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -153,15 +166,13 @@
             this.logoutLink.Text = "Log Out";
             this.logoutLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLink_LinkClicked);
             // 
-            // IncidentsByTechnician
+            // viewIncidentsByTechnician1
             // 
-            this.IncidentsByTechnician.Location = new System.Drawing.Point(4, 22);
-            this.IncidentsByTechnician.Name = "IncidentsByTechnician";
-            this.IncidentsByTechnician.Padding = new System.Windows.Forms.Padding(3);
-            this.IncidentsByTechnician.Size = new System.Drawing.Size(652, 479);
-            this.IncidentsByTechnician.TabIndex = 5;
-            this.IncidentsByTechnician.Text = "View Incidents By Technician";
-            this.IncidentsByTechnician.UseVisualStyleBackColor = true;
+            this.viewIncidentsByTechnician1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.viewIncidentsByTechnician1.Location = new System.Drawing.Point(3, 3);
+            this.viewIncidentsByTechnician1.Name = "viewIncidentsByTechnician1";
+            this.viewIncidentsByTechnician1.Size = new System.Drawing.Size(646, 473);
+            this.viewIncidentsByTechnician1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -179,6 +190,7 @@
             this.displayOpenIncidentsPage.PerformLayout();
             this.addTab.ResumeLayout(false);
             this.updateTab.ResumeLayout(false);
+            this.IncidentsByTechnician.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -198,5 +210,6 @@
         private System.Windows.Forms.TabPage updateTab;
         private UserControls.UpdateIncident updateIncident1;
         private System.Windows.Forms.TabPage IncidentsByTechnician;
+        private UserControls.ViewIncidentsByTechnician viewIncidentsByTechnician1;
     }
 }

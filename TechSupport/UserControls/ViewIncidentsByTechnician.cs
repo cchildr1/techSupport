@@ -1,20 +1,67 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using TechSupport.Controller;
+using TechSupport.Model;
 
 namespace TechSupport.UserControls
 {
+    /// <summary>
+    /// User Control to view incidents by technician
+    /// </summary>
     public partial class ViewIncidentsByTechnician : UserControl
     {
+        private IncidentController controller;
+        private List<Technician> technicians;
+        private List<Incident> incidents;
+
         public ViewIncidentsByTechnician()
         {
             InitializeComponent();
+            this.controller = new IncidentController();
+        }
+
+        private void GetTechnicianList()
+        {
+            try
+            {
+                technicians = controller.getTechniciansWithOpenIncidents();
+                nameComboBox.DataSource = technicians;
+                nameComboBox.ValueMember = "TechID";
+                nameComboBox.DisplayMember = "Name";
+                nameComboBox.SelectedIndex = 0;
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void getTechnicianData()
+        {
+            
+            try
+            {
+                int technicianIndex = (int)nameComboBox.SelectedIndex;
+                Technician technician = technicians[technicianIndex];
+                emailTextBox.Text = technician.Email;
+                phoneTextBox.Text = technician.Phone;
+            } 
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
+        }
+
+        private void ViewIncidentsByTechnician_Load(object sender, EventArgs e)
+        {
+            this.GetTechnicianList();
+            this.getTechnicianData();
+        }
+
+        private void nameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.getTechnicianData();
         }
     }
 }

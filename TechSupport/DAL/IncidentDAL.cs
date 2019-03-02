@@ -196,9 +196,30 @@ namespace TechSupport.DAL
         internal List<Technician> GetTechniciansWithOpenIncidents()
         {
             List<Technician> technicians = new List<Technician>();
+            string selectStatement = "SELECT distinct t.techID, t.Name, t.Email, t.Phone from Technicians t join Incidents i on t.TechID = i.techid AND i.dateClosed is null;";
 
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read()) {
+                            technicians.Add(new Technician
+                            {
 
-            return technicians;
+                                TechID = (int)reader["TechID"],
+                                Name = reader["Name"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                Phone = reader["Phone"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+
+                return technicians;
             
         }
         /// <summary>

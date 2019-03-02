@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TechSupport.DAL;
 using TechSupport.Model;
 
@@ -83,6 +82,14 @@ namespace TechSupport.Controller
         public bool UpdateIncident(Incident newIncident, Incident oldIncident)
         {
             return this.incidentSource.UpdateIncident(newIncident, oldIncident);
+        }
+        /// <summary>
+        /// Returns list of technicians with open incidents
+        /// </summary>
+        /// <returns>Technicians with open incidents</returns>
+        public List<Technician> getTechniciansWithOpenIncidents()
+        {
+            return this.incidentSource.GetTechniciansWithOpenIncidents();
         }
     }
 }
