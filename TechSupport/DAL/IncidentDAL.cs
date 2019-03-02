@@ -189,39 +189,7 @@ namespace TechSupport.DAL
             }
             return technicians;
         }
-        /// <summary>
-        /// Returns a list of Technicians who have open incidents
-        /// </summary>
-        /// <returns>list of technicians</returns>
-        internal List<Technician> GetTechniciansWithOpenIncidents()
-        {
-            List<Technician> technicians = new List<Technician>();
-            string selectStatement = "SELECT distinct t.techID, t.Name, t.Email, t.Phone from Technicians t join Incidents i on t.TechID = i.techid AND i.dateClosed is null;";
 
-            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
-            {
-                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = selectCommand.ExecuteReader())
-                    {
-                        while (reader.Read()) {
-                            technicians.Add(new Technician
-                            {
-
-                                TechID = (int)reader["TechID"],
-                                Name = reader["Name"].ToString(),
-                                Email = reader["Email"].ToString(),
-                                Phone = reader["Phone"].ToString()
-                            });
-                        }
-                    }
-                }
-            }
-
-                return technicians;
-            
-        }
         /// <summary>
         /// Returns a single incident based on ID
         /// </summary>
@@ -361,6 +329,80 @@ namespace TechSupport.DAL
                 }
             }
         }
+        /// <summary>
+        /// Returns a list of Technicians who have open incidents
+        /// </summary>
+        /// <returns>list of technicians</returns>
+        internal List<Technician> GetTechniciansWithOpenIncidents()
+        {
+            List<Technician> technicians = new List<Technician>();
+            string selectStatement = "SELECT distinct t.techID, t.Name, t.Email, t.Phone from Technicians t join Incidents i on t.TechID = i.techid AND i.dateClosed is null;";
 
+            using (SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            technicians.Add(new Technician
+                            {
+
+                                TechID = (int)reader["TechID"],
+                                Name = reader["Name"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                Phone = reader["Phone"].ToString()
+                            });
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+
+            return technicians;
+
+        }
+
+        /// <summary>
+        /// Gets open incidents for the specified technician
+        /// </summary>
+        /// <param name="technicianID">id of technician</param>
+        /// <returns>list of open incidents</returns>
+        internal List<Incident> GetOpenIncidentsForTechnician(int technicianID)
+        {
+            List<Incident> incidents = new List<Incident>();
+
+            string selectStatement = "SELECT p.Name as ProductName, i.dateOpened, c.Name as CustomerName, i.Title " +
+                "FROM incidents i " +
+                "join technicians t on t.techID = i.techID AND i.dateClosed is null and i.techid = @TechID " +
+                "join products p on i.productCode = p.productCode " +
+                "join Customers c on i.customerID = c.CustomerID;";
+
+            using(SqlConnection connection = TechSupportDBConnection.GetConnection())
+            {
+                using (SqlCommand selectCommand = new SqlCommand(selectStatement, connection))
+                {
+                    selectCommand.Parameters.AddWithValue("@TechID", technicianID);
+                    connection.Open();
+                    using (SqlDataReader reader = selectCommand.ExecuteReader())
+                    {
+                        while(reader.Read())
+                        {
+                            incidents.Add(new Incident
+                            {
+                                ProductName = reader["ProductName"].ToString(),
+                                DateOpened = (DateTime)reader["DateOpened"],
+                                CustomerName = reader["CustomerName"].ToString(),
+                                Title = reader["Title"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+
+            return incidents;
+        }
     }
 }

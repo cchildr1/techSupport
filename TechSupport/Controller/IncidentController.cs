@@ -87,9 +87,19 @@ namespace TechSupport.Controller
         /// Returns list of technicians with open incidents
         /// </summary>
         /// <returns>Technicians with open incidents</returns>
-        public List<Technician> getTechniciansWithOpenIncidents()
+        public List<Technician> GetTechniciansWithOpenIncidents()
         {
             return this.incidentSource.GetTechniciansWithOpenIncidents();
+        }
+
+        /// <summary>
+        /// Gets open incidents for the specified technican
+        /// </summary>
+        /// <param name="TechnicianID">tech ID of technician</param>
+        /// <returns>list of incidents</returns>
+        public List<Incident> getOpenIncidentsByTechnician(int technicianID)
+        {
+            return this.incidentSource.GetOpenIncidentsForTechnician(technicianID);
         }
     }
 }

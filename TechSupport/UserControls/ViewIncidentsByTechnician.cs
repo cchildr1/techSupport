@@ -25,7 +25,7 @@ namespace TechSupport.UserControls
         {
             try
             {
-                technicians = controller.getTechniciansWithOpenIncidents();
+                technicians = controller.GetTechniciansWithOpenIncidents();
                 nameComboBox.DataSource = technicians;
                 nameComboBox.ValueMember = "TechID";
                 nameComboBox.DisplayMember = "Name";
@@ -46,6 +46,9 @@ namespace TechSupport.UserControls
                 Technician technician = technicians[technicianIndex];
                 emailTextBox.Text = technician.Email;
                 phoneTextBox.Text = technician.Phone;
+                populateIncidentGridView(technician.TechID);
+                incidentDataGridView.DataSource = this.controller.getOpenIncidentsByTechnician(technicianID);
+
             } 
             catch (Exception ex)
             {
@@ -63,5 +66,6 @@ namespace TechSupport.UserControls
         {
             this.getTechnicianData();
         }
+
     }
 }
